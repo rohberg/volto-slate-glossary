@@ -22,3 +22,7 @@ Include in your project with
 
         return config;
     }
+
+
+Install Plone Add-On https://github.com/collective/collective.glossary
+
