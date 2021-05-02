@@ -10,6 +10,7 @@ const serializeData = (node) => {
 };
 
 export const serializeNodes = (nodes, getAttributes) => {
+  console.log('** serializeNodes', customized);
   const editor = { children: nodes || [] };
 
   const _serializeNodes = (nodes) => {
