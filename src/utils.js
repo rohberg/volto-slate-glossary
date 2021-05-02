@@ -2,15 +2,16 @@
 import React from 'react';
 import cx from 'classnames';
 import { isEmpty, isEqual, omit } from 'lodash';
+import { Node, Text } from 'slate';
 
-import { Element, Leaf } from 'volto-slate/render';
+import { Element, Leaf } from 'volto-slate/editor/render';
 
 const serializeData = (node) => {
   return JSON.stringify({ type: node.type, data: node.data });
 };
 
 export const serializeNodes = (nodes, getAttributes) => {
-  console.log('** serializeNodes', customized);
+  console.log('** serializeNodes (customized)');
   const editor = { children: nodes || [] };
 
   const _serializeNodes = (nodes) => {
