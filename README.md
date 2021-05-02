@@ -1,7 +1,17 @@
-Volto Add-On @rohberg/volto-glossary
+# volto-slate-glossary
+
+[Volto Slate](https://github.com/eea/volto-slate/tree/develop) Glossary
+
+## Features
+
+### Add tootips for glossary terms of [collective.glossary](https://pypi.org/project/collective.glossary/)
+
+
+## Getting started
+
+Install volto-slate-glossary.
 
 Include in your project with
-
 
     import Tooltips from '@rohberg/volto-glossary/components';
 
@@ -24,5 +34,8 @@ Include in your project with
     }
 
 
-Install Plone Add-On https://github.com/collective/collective.glossary
+Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary)
 
+
+
+> This add-on is for slate editor only, not draftJS editor.
