@@ -23,6 +23,7 @@ Include in your project with
         return config;
     }
 
+Use the customized serializeNodes instead of that from volto-slate (TextBlockView).
 
 Install Plone Add-On https://github.com/collective/collective.glossary
 
