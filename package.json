@@ -13,7 +13,10 @@
   "scripts": {
     "i18n": "NODE_ENV=production node src/i18n.js"
   },
+  "addons": [
+    "volto-slate:asDefault"
+  ],
   "dependencies": {
-    "volto-slate": "*"
+    "volto-slate": "^2.0.0"
   }
 }
