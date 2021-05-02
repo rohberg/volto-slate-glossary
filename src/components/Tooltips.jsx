@@ -1,3 +1,4 @@
+// TODO fetch glossary data on SSR
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
