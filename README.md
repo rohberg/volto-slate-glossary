@@ -1,8 +1,8 @@
-### Volto Add-On @rohberg/volto-slate-glossary
+# Volto Add-On @rohberg/volto-slate-glossary
 
 ## Add tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
 
-This is **work-in-progress**
+## work-in-progress
 
 Include in your project with
 
