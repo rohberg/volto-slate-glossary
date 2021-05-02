@@ -1,7 +1,7 @@
 {
-  "name": "@rohberg/volto-glossary",
+  "name": "@rohberg/volto-slate-glossary",
   "version": "0.1.0",
-  "description": "volto-glossary: Volto add-on",
+  "description": "volto-slate-glossary: Volto add-on",
   "main": "src/index.js",
   "license": "MIT",
   "keywords": [

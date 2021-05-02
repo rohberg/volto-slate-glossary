@@ -8,7 +8,7 @@
 
 Include in your project with
 
-    import Tooltips from '@rohberg/volto-glossary/components';
+    import Tooltips from '@rohberg/volto-slate-glossary/components';
 
     // All your imports required for the config here BEFORE this line
     import '@plone/volto/config';
