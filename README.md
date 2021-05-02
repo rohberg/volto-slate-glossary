@@ -1,7 +1,8 @@
-Volto Add-On @rohberg/volto-glossary
+### Volto Add-On @rohberg/volto-slate-glossary
+
+This is **work-in-progress**
 
 Include in your project with
-
 
     import Tooltips from '@rohberg/volto-glossary/components';
 
@@ -23,7 +24,6 @@ Include in your project with
         return config;
     }
 
-Use the customized serializeNodes instead of that from volto-slate (TextBlockView).
+Hack: Use the customized *serializeNodes* in *TextBlockView* instead of that from volto-slate. **TODO** Find a way to hook into rendering of blocks. A block tranformer is not appropriate as it manipulates the block data permanently. We do not want the blocks data to be untouched.
 
-Install Plone Add-On https://github.com/collective/collective.glossary
-
+Install Plone Add-On [collective.glossary branch Plone5.2](https://github.com/collective/collective.glossary) in your backend.
