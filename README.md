@@ -2,7 +2,7 @@
 
 ## Add tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
 
-![Screen Recording](https://raw.githubusercontent.com/rohberg/volto-slate-glossary/master/public/tooltips.gif)
+![Tooltips @rohberg/volto-slate-glossary](https://github.com/rohberg/volto-slate-glossary/blob/6deebe7ecfa5a6265e2ead8f5902cfd2243329ca/public/tooltips.png)
 
 ## work-in-progress
 
