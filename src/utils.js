@@ -61,13 +61,12 @@ export const serializeNodes = (nodes, getAttributes) => {
               let descr = glossaryterms[idx]['description'];
               return (
                 <Popup
+                  position="bottom left"
                   trigger={<span className="glossarytooltip">{el.val}</span>}
                   key={j}
                 >
                   <Popup.Content>
                     <div>
-                      <b>{el.val}</b>
-                      <br />
                       <span>{descr}</span>
                     </div>
                   </Popup.Content>
