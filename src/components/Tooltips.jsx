@@ -1,33 +1,27 @@
-// TODO fetch glossary data on SSR
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { searchContent } from '@plone/volto/actions';
 
 const Tooltips = () => {
   const dispatch = useDispatch();
-  const glossaryterms = useSelector(
-    (state) => state.search.subrequests.glossaryterms?.items,
-  );
-  console.log('glossaryterms', glossaryterms);
+  // console.log('Tooltipscomponent: glossaryterms', glossaryterms);
 
   useEffect(() => {
-    const portalTypes = ['Term'];
-    const workflows = ['published'];
     dispatch(
       searchContent(
         '/',
         {
-          portal_type: portalTypes,
-          review_state: workflows,
-          sort_on: 'title',
+          portal_type: ['Term'],
+          review_state: ['published'],
+          sort_on: 'id',
+          sort_order: 'descending',
         },
         'glossaryterms',
       ),
     );
   }, [dispatch]);
 
-  return __CLIENT__ && <div>I am Tooltips component</div>;
+  return <div className="hidden-helper"></div>;
 };
 
 export default Tooltips;
