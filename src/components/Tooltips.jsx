@@ -15,6 +15,7 @@ const Tooltips = () => {
           review_state: ['published'],
           sort_on: 'id',
           sort_order: 'descending',
+          b_size: 1000,
         },
         'glossaryterms',
       ),
