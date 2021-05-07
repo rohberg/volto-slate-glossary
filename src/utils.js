@@ -1,33 +1,37 @@
-// TODO serializeNodes
+/**
+ * customization of serializeNodes from volto-slate to apply glossary tooltips in text blocks
+ * TODO find better solution without overriding serializeNodes. Something like a configurable Leaf.
+ * See https://community.plone.org/t/slate-rendering/13787/4
+ */
+
+// TODO restrict paths and portal_type to apply to
 import React from 'react';
 import { useSelector } from 'react-redux';
-import cx from 'classnames';
-import { flatten, isEqual, reverse } from 'lodash';
-import { Button, Popup } from 'semantic-ui-react';
+import { flatten, isEqual } from 'lodash';
+import { Popup } from 'semantic-ui-react';
 import { Node, Text } from 'slate';
 
 import { Element, Leaf } from 'volto-slate/editor/render';
 
-const addGlossaryTooltips = (txt) => {
+const TextWithGlossaryTooltips = ({ text }) => {
   const glossaryterms = useSelector(
     (state) => state.search.subrequests.glossaryterms?.items,
   );
-  let result = [{ type: 'text', val: txt }];
+  let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
     glossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
-          let splittedtext = chunk.val.split(term.title);
-          if (splittedtext.length > 1) {
-            chunk = [{ type: 'text', val: splittedtext[0] }];
-            splittedtext.splice(0, 1);
-            splittedtext.forEach((t) => {
-              chunk.push({
-                type: 'popup',
-                val: term.title,
-              });
-              chunk.push({ type: 'text', val: t });
+          let myre = `\\b${term.title}\\b`;
+          let regExpTerm = new RegExp(myre);
+          let splittedtext = chunk.val.split(regExpTerm).reverse();
+          chunk = [{ type: 'text', val: splittedtext.pop() }];
+          while (splittedtext.length > 0) {
+            chunk.push({
+              type: 'popup',
+              val: term.title,
             });
+            chunk.push({ type: 'text', val: splittedtext.pop() });
           }
         }
         return chunk;
@@ -36,7 +40,28 @@ const addGlossaryTooltips = (txt) => {
     });
   }
   result = flatten(result);
-  return result;
+
+  return result.map((el, j) => {
+    if (el.type === 'text') {
+      return <span key={j}>{el.val}</span>;
+    } else {
+      let idx = glossaryterms.findIndex((gt) => gt.title === el.val);
+      let descr = glossaryterms[idx]['description'];
+      return (
+        <Popup
+          position="bottom left"
+          trigger={<span className="glossarytooltip">{el.val}</span>}
+          key={j}
+        >
+          <Popup.Content>
+            <div>
+              <span>{descr}</span>
+            </div>
+          </Popup.Content>
+        </Popup>
+      );
+    }
+  });
 };
 
 const serializeData = (node) => {
@@ -45,35 +70,12 @@ const serializeData = (node) => {
 
 export const serializeNodes = (nodes, getAttributes) => {
   const editor = { children: nodes || [] };
-  const glossaryterms = useSelector(
-    (state) => state.search.subrequests.glossaryterms?.items,
-  );
 
   const _serializeNodes = (nodes) => {
     return (nodes || []).map(([node, path], i) => {
       return Text.isText(node) ? (
         <Leaf path={path} leaf={node} text={node} mode="view" key={path}>
-          {addGlossaryTooltips(node.text).map((el, j) => {
-            if (el.type === 'text') {
-              return <span key={j}>{el.val}</span>;
-            } else {
-              let idx = glossaryterms.findIndex((gt) => gt.title === el.val);
-              let descr = glossaryterms[idx]['description'];
-              return (
-                <Popup
-                  position="bottom left"
-                  trigger={<span className="glossarytooltip">{el.val}</span>}
-                  key={j}
-                >
-                  <Popup.Content>
-                    <div>
-                      <span>{descr}</span>
-                    </div>
-                  </Popup.Content>
-                </Popup>
-              );
-            }
-          })}
+          <TextWithGlossaryTooltips text={node.text} />
         </Leaf>
       ) : (
         <Element
