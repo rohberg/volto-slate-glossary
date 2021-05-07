@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { searchContent } from '@plone/volto/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import jwtDecode from 'jwt-decode';
+import { getUser, searchContent } from '@plone/volto/actions';
 
 const Tooltips = () => {
   const dispatch = useDispatch();
-  // console.log('Tooltipscomponent: glossaryterms', glossaryterms);
+  const token = useSelector((state) => state.userSession?.token);
 
   useEffect(() => {
     dispatch(
@@ -21,6 +22,11 @@ const Tooltips = () => {
       ),
     );
   }, [dispatch]);
+
+  React.useEffect(() => {
+    let userid = token ? jwtDecode(token).sub : '';
+    dispatch(getUser(userid));
+  }, [dispatch, token]);
 
   return <div className="hidden-helper"></div>;
 };
