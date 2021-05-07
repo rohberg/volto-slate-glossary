@@ -4,7 +4,6 @@
  * See https://community.plone.org/t/slate-rendering/13787/4
  */
 
-// TODO restrict paths and portal_type to apply to
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { flatten, isEqual } from 'lodash';
@@ -17,6 +16,14 @@ const TextWithGlossaryTooltips = ({ text }) => {
   const glossaryterms = useSelector(
     (state) => state.search.subrequests.glossaryterms?.items,
   );
+
+  // no tooltips if user opted out
+  const currentuser = useSelector((state) => state.users?.user);
+  const glossarytooltips = currentuser?.glossarytooltips ?? true;
+  if (!glossarytooltips) {
+    return <span>{text}</span>;
+  }
+
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
     glossaryterms.forEach((term) => {

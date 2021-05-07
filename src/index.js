@@ -13,6 +13,8 @@ const searchoptions = [
   'glossaryterms',
 ];
 
+// TODO restrict tooltips to paths and portal_types
+
 export default (config) => {
   config.settings.asyncPropsExtenders = [
     ...(config.settings.asyncPropsExtenders ?? []),
