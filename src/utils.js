@@ -25,8 +25,26 @@ const TextWithGlossaryTooltips = ({ text }) => {
   }
 
   let result = [{ type: 'text', val: text }];
+
+  // variants
+  let newglossaryterms = [];
   if (glossaryterms !== undefined) {
     glossaryterms.forEach((term) => {
+      if (term.variants) {
+        term.variants.forEach((variant) => {
+          newglossaryterms.push({
+            ...term,
+            title: variant,
+            description: term.definition,
+          });
+        });
+      } else {
+        newglossaryterms.push(term);
+      }
+    });
+
+    newglossaryterms.forEach((term) => {
+      console.debug('newglossaryterms term', term.title, term.description);
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let myre = `\\b${term.title}\\b`;
@@ -47,13 +65,19 @@ const TextWithGlossaryTooltips = ({ text }) => {
     });
   }
   result = flatten(result);
+  console.debug('result', result);
 
   return result.map((el, j) => {
     if (el.type === 'text') {
       return <span key={j}>{el.val}</span>;
     } else {
-      let idx = glossaryterms.findIndex((gt) => gt.title === el.val);
-      let descr = glossaryterms[idx]['description'];
+      let idx = newglossaryterms.findIndex((gt) => gt.title === el.val);
+      // newglossaryterms.map((term) => {
+      //   console.debug('term test', term.title, el.val);
+      // });
+      let descr = newglossaryterms[idx]['description'];
+      console.debug('el.val', idx, el.val);
+      console.debug('descr', descr);
       return (
         <Popup
           position="bottom left"
@@ -61,9 +85,7 @@ const TextWithGlossaryTooltips = ({ text }) => {
           key={j}
         >
           <Popup.Content>
-            <div>
-              <span>{descr}</span>
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: descr }} />
           </Popup.Content>
         </Popup>
       );
