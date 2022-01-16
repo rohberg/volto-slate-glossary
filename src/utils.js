@@ -4,6 +4,7 @@
  * See https://community.plone.org/t/slate-rendering/13787/4
  */
 
+import { concat } from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { flatten, isEqual } from 'lodash';
@@ -20,13 +21,33 @@ const TextWithGlossaryTooltips = ({ text }) => {
   // no tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
   const glossarytooltips = currentuser?.glossarytooltips ?? true;
+
   if (!glossarytooltips) {
     return <span>{text}</span>;
   }
 
+  let variations = [];
+  if (glossaryterms !== undefined) {
+    glossaryterms.forEach((el) => {
+      let vrs = el.variations;
+      variations.push({
+        title: el.title,
+        description: el.description,
+        definition: el.definition,
+      });
+      vrs.forEach((vr) => {
+        variations.push({
+          title: vr,
+          description: el.description,
+          definition: el.definition,
+        });
+      });
+    });
+  }
+
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
-    glossaryterms.forEach((term) => {
+    variations.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let myre = `\\b${term.title}\\b`;
@@ -52,8 +73,9 @@ const TextWithGlossaryTooltips = ({ text }) => {
     if (el.type === 'text') {
       return <span key={j}>{el.val}</span>;
     } else {
-      let idx = glossaryterms.findIndex((gt) => gt.title === el.val);
-      let descr = glossaryterms[idx]['description'];
+      let idx = variations.findIndex((variation) => variation.title === el.val);
+      let descr =
+        variations[idx].definition?.data || variations[idx].description;
       return (
         <Popup
           position="bottom left"
@@ -61,9 +83,11 @@ const TextWithGlossaryTooltips = ({ text }) => {
           key={j}
         >
           <Popup.Content>
-            <div>
-              <span>{descr}</span>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: descr,
+              }}
+            />
           </Popup.Content>
         </Popup>
       );

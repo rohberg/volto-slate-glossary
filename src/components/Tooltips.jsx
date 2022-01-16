@@ -17,6 +17,7 @@ const Tooltips = () => {
           sort_on: 'id',
           sort_order: 'descending',
           b_size: 1000,
+          fullobjects: true,
         },
         'glossaryterms',
       ),

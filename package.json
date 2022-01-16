@@ -18,6 +18,6 @@
   ],
   "dependencies": {
     "@plone/scripts": "*",
-    "volto-slate": "^2.0.0"
+    "volto-slate": "*"
   }
 }
