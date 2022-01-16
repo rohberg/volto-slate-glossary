@@ -1,5 +1,6 @@
 import { serializeNodes } from './utils';
 import GlossaryView from './components/GlossaryView';
+import TermView from './components/TermView';
 import { searchContent } from '@plone/volto/actions';
 
 const searchoptions = [
@@ -43,6 +44,7 @@ export default (config) => {
     contentTypesViews: {
       ...config.views.contentTypesViews,
       Glossary: GlossaryView,
+      Term: TermView,
     },
   };
 
