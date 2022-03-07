@@ -1,27 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { getUser, searchContent } from '@plone/volto/actions';
+import { getUser } from '@plone/volto/actions';
+import { getTooltipTerms } from '../actions';
 
 const Tooltips = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userSession?.token);
 
   useEffect(() => {
-    dispatch(
-      searchContent(
-        '/',
-        {
-          portal_type: ['Term'],
-          review_state: ['published'],
-          sort_on: 'id',
-          sort_order: 'descending',
-          b_size: 1000,
-          fullobjects: true,
-        },
-        'glossaryterms',
-      ),
-    );
+    dispatch(getTooltipTerms());
   }, [dispatch]);
 
   React.useEffect(() => {
