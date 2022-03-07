@@ -1,28 +1,19 @@
 import React from 'react';
-import { endsWith } from 'lodash';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { searchContent } from '@plone/volto/actions';
+import { getGlossaryTerms } from '../actions';
 
 const GlossaryView = ({ content }) => {
   const dispatch = useDispatch();
   const pathname = useSelector((state) => state.router.location.pathname);
 
   React.useEffect(() => {
-    dispatch(
-      searchContent(pathname, {
-        review_state: ['published'],
-        'path.depth': 1,
-        b_size: 1000,
-        sort_on: 'sortable_title',
-        fullobjects: true,
-      }),
-    );
+    dispatch(getGlossaryTerms());
   }, [dispatch, pathname]);
 
-  const glossaryentries = useSelector((state) => state.search.items).filter(
-    (item) => !endsWith(content['@id'], item['@id']),
+  let glossaryentries = useSelector(
+    (state) => state.glossaryterms.result.items,
   );
 
   return (
@@ -34,21 +25,29 @@ const GlossaryView = ({ content }) => {
             <p className="documentDescription">{content.description}</p>
           )}
         </header>
-        <section id="content-core">
-          {glossaryentries?.map((item) => (
-            <article key={item['@id']}>
-              <h3>
-                <Link to={item['@id']}>
-                  <span>{item.title}</span>
-                </Link>
-              </h3>
-              <h4>{item.variations?.join(', ')}</h4>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: item.definition.data || item.description,
-                }}
-              />
-            </article>
+        <section id="content-core" className="glossary">
+          {Object.keys(glossaryentries || {})?.map((letter) => (
+            <div>
+              <h2 class="letter">{letter}</h2>
+              {glossaryentries[letter].map((item) => (
+                <article className="term" key={item['@id']}>
+                  <h3>
+                    <Link to={item['@id']}>{item.title}</Link>
+                    {item.terms && item.terms.length > 0 && (
+                      <span className="variants">
+                        {' '}
+                        - {item.terms?.join(', ')}
+                      </span>
+                    )}
+                  </h3>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: item.definition || '',
+                    }}
+                  />
+                </article>
+              ))}
+            </div>
           ))}
         </section>
       </article>
