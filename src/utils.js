@@ -47,14 +47,12 @@ const TextWithGlossaryTooltips = ({ text }) => {
     });
   }
   result = flatten(result);
-  console.debug('result', result);
 
   return result.map((el, j) => {
     if (el.type === 'text') {
       return <span key={j}>{el.val}</span>;
     } else {
       let idx = glossaryterms.findIndex((variant) => variant.term === el.val);
-      console.debug('idx', el, idx, glossaryterms[idx]);
       let definition = glossaryterms[idx]?.definition || '';
       // TODO convert definition to ul
       switch (definition.length) {
@@ -68,9 +66,9 @@ const TextWithGlossaryTooltips = ({ text }) => {
           let foo = definition.map((el) => `<li>${el}</li>`).join('');
           definition = `<ol>${foo}</ol>`;
       }
-      console.debug('definition', definition);
       return (
         <Popup
+          wide
           position="bottom left"
           trigger={<span className="glossarytooltip">{el.val}</span>}
           key={j}
