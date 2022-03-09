@@ -14,7 +14,9 @@ const Tooltips = () => {
 
   React.useEffect(() => {
     let userid = token ? jwtDecode(token).sub : '';
-    dispatch(getUser(userid));
+    if (token) {
+      dispatch(getUser(userid));
+    }
   }, [dispatch, token]);
 
   return <div className="hidden-helper"></div>;
