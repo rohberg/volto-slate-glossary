@@ -29,9 +29,18 @@ const TextWithGlossaryTooltips = ({ text }) => {
     glossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
-          let myre = `\\b${term.term}\\b`;
-          let regExpTerm = new RegExp(myre);
-          let splittedtext = chunk.val.split(regExpTerm).reverse();
+          var splittedtext;
+          // regex word boundary does ignore umlauts and other non ascii
+          if (['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü'].includes(term.term[0])) {
+            // let myre = `(?<!\w)${term.term}(?!\w)`;
+            let myre = `(?<=[ ,\.])${term.term}(?=[ ,\.])`;
+            let regExpTerm = new RegExp(myre, 'g');
+            splittedtext = chunk.val.split(regExpTerm).reverse();
+          } else {
+            let myre = `\\b${term.term}\\b`;
+            let regExpTerm = new RegExp(myre);
+            splittedtext = chunk.val.split(regExpTerm).reverse();
+          }
           chunk = [{ type: 'text', val: splittedtext.pop() }];
           while (splittedtext.length > 0) {
             chunk.push({
