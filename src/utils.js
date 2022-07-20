@@ -10,7 +10,7 @@ import { flatten, isEqual } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { Node, Text } from 'slate';
 
-import { Element, Leaf } from 'volto-slate/editor/render';
+import { Element, Leaf } from '@plone/volto-slate/editor/render';
 
 const TextWithGlossaryTooltips = ({ text }) => {
   const glossaryterms = useSelector(

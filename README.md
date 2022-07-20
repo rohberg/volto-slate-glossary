@@ -28,7 +28,7 @@ Include in your project with
         return config;
     }
 
-Hack: Use the customized *serializeNodes* in *TextBlockView* instead of that from volto-slate. **TODO** Find a way to hook into rendering of blocks. A block tranformer is not appropriate as it manipulates the block data permanently. We want the blocks data to be untouched.
+Hack: Use the customized *serializeNodes* in *TextBlockView* instead of that from @plone/volto-slate. **TODO** Find a way to hook into rendering of blocks. A block tranformer is not appropriate as it manipulates the block data permanently. We want the blocks data to be untouched.
 
 Install Plone Add-On [collective.glossary branch Plone5.2](https://github.com/collective/collective.glossary) in your backend.
 
