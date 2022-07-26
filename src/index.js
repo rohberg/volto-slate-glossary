@@ -1,11 +1,12 @@
-import { serializeNodes } from './utils';
 import GlossaryView from './components/GlossaryView';
 import TermView from './components/TermView';
 import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
-
-// TODO restrict tooltips to paths and portal_types
+import { TextWithGlossaryTooltips } from './utils';
 
 export default (config) => {
+  config.settings.slate.leafs = {
+    text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
+  };
   config.views = {
     ...config.views,
     contentTypesViews: {
@@ -23,5 +24,3 @@ export default (config) => {
 
   return config;
 };
-
-export { serializeNodes };

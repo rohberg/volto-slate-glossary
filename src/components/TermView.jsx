@@ -24,7 +24,7 @@ const TermView = ({ content }) => {
             {content.definition && (
               <p
                 dangerouslySetInnerHTML={{
-                  __html: content.definition?.data || [],
+                  __html: content.definition?.data || '',
                 }}
               />
             )}

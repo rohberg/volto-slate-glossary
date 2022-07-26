@@ -27,7 +27,7 @@ const GlossaryView = ({ content }) => {
         </header>
         <section id="content-core" className="glossary">
           {Object.keys(glossaryentries || {})?.map((letter) => (
-            <div>
+            <div key={letter}>
               <h2 className="letter">{letter}</h2>
               {glossaryentries[letter].map((item) => (
                 <article className="term" key={item['@id']}>
