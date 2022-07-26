@@ -1,27 +1,24 @@
-/**
- * customization of serializeNodes from volto-slate to apply glossary tooltips in text blocks
- * TODO find better solution without overriding serializeNodes. Something like a configurable Leaf.
- * See https://community.plone.org/t/slate-rendering/13787/4
- */
-
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { flatten, isEqual } from 'lodash';
+import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
-import { Node, Text } from 'slate';
+import { useLocation } from 'react-router-dom';
 
-import { Element, Leaf } from 'volto-slate/editor/render';
-
-const TextWithGlossaryTooltips = ({ text }) => {
+export const TextWithGlossaryTooltips = ({ text }) => {
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
+  const location = useLocation();
 
   // no tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
   const glossarytooltips = currentuser?.glossarytooltips ?? true;
   if (!glossarytooltips) {
-    return <span>{text}</span>;
+    return text;
+  }
+  const isEditMode = location.pathname.slice(-5) === '/edit';
+  if (isEditMode || location.pathname === '/' || !__CLIENT__) {
+    return text;
   }
 
   let result = [{ type: 'text', val: text }];
@@ -63,7 +60,6 @@ const TextWithGlossaryTooltips = ({ text }) => {
     } else {
       let idx = glossaryterms.findIndex((variant) => variant.term === el.val);
       let definition = glossaryterms[idx]?.definition || '';
-      // TODO convert definition to ul
       switch (definition.length) {
         case 0:
           definition = '';
@@ -95,41 +91,4 @@ const TextWithGlossaryTooltips = ({ text }) => {
       );
     }
   });
-};
-
-const serializeData = (node) => {
-  return JSON.stringify({ type: node.type, data: node.data });
-};
-
-export const serializeNodes = (nodes, getAttributes) => {
-  const editor = { children: nodes || [] };
-
-  const _serializeNodes = (nodes) => {
-    return (nodes || []).map(([node, path], i) => {
-      return Text.isText(node) ? (
-        <Leaf path={path} leaf={node} text={node} mode="view" key={path}>
-          <TextWithGlossaryTooltips text={node.text} />
-        </Leaf>
-      ) : (
-        <Element
-          path={path}
-          element={node}
-          mode="view"
-          key={path}
-          data-slate-data={node.data ? serializeData(node) : null}
-          attributes={
-            isEqual(path, [0])
-              ? getAttributes
-                ? getAttributes(node, path)
-                : null
-              : null
-          }
-        >
-          {_serializeNodes(Array.from(Node.children(editor, path)))}
-        </Element>
-      );
-    });
-  };
-
-  return _serializeNodes(Array.from(Node.children(editor, [])));
 };
