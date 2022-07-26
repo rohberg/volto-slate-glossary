@@ -32,3 +32,6 @@ Install Plone Add-On [collective.glossary](https://github.com/collective/collect
 
 
 User can opt-out by setting glossarytooltips to false. Add a member field *glossarytooltips*.
+
+
+This add-on requires Volto with Slate. Be sure to upgrade to Volto >= 16.0.0-alpha.15.
