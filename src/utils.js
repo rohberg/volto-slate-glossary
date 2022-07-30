@@ -4,6 +4,30 @@ import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
 
+/**
+ * import from @plone/volto-slate Leaf when ready there
+ * @param {String} children text to be decorated
+ */
+const applyLineBreakSupport = (children) => {
+  const klass = undefined;
+  return children.split('\n').map((t, i) => {
+    return (
+      <React.Fragment key={`${i}`}>
+        {children.indexOf('\n') > -1 && children.split('\n').length - 1 > i ? (
+          <>
+            {klass ? <span className={klass}>{t}</span> : t}
+            <br />
+          </>
+        ) : klass ? (
+          <span className={klass}>{t}</span>
+        ) : (
+          t
+        )}
+      </React.Fragment>
+    );
+  });
+};
+
 export const TextWithGlossaryTooltips = ({ text }) => {
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
@@ -56,7 +80,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
 
   return result.map((el, j) => {
     if (el.type === 'text') {
-      return <span key={j}>{el.val}</span>;
+      return applyLineBreakSupport(el.val);
     } else {
       let idx = glossaryterms.findIndex((variant) => variant.term === el.val);
       let definition = glossaryterms[idx]?.definition || '';
