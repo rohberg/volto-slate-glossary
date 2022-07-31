@@ -10,22 +10,26 @@ import { useLocation } from 'react-router-dom';
  */
 const applyLineBreakSupport = (children) => {
   const klass = undefined;
-  return children.split('\n').map((t, i) => {
-    return (
-      <React.Fragment key={`${i}`}>
-        {children.indexOf('\n') > -1 && children.split('\n').length - 1 > i ? (
-          <>
-            {klass ? <span className={klass}>{t}</span> : t}
-            <br />
-          </>
-        ) : klass ? (
-          <span className={klass}>{t}</span>
-        ) : (
-          t
-        )}
-      </React.Fragment>
-    );
-  });
+
+  return typeof children === 'string'
+    ? children.split('\n').map((t, i) => {
+        return (
+          <React.Fragment key={`${i}`}>
+            {children.indexOf('\n') > -1 &&
+            children.split('\n').length - 1 > i ? (
+              <>
+                {klass ? <span className={klass}>{t}</span> : t}
+                <br />
+              </>
+            ) : klass ? (
+              <span className={klass}>{t}</span>
+            ) : (
+              t
+            )}
+          </React.Fragment>
+        );
+      })
+    : children;
 };
 
 export const TextWithGlossaryTooltips = ({ text }) => {
@@ -41,7 +45,8 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     return text;
   }
   const isEditMode = location.pathname.slice(-5) === '/edit';
-  if (isEditMode || location.pathname === '/' || !__CLIENT__) {
+  const isAddMode = location.pathname.slice(-4) === '/add';
+  if (isEditMode || isAddMode || location.pathname === '/' || !__CLIENT__) {
     return text;
   }
 
