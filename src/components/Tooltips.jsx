@@ -12,7 +12,7 @@ const Tooltips = () => {
     dispatch(getTooltipTerms());
   }, [dispatch]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let userid = token ? jwtDecode(token).sub : '';
     if (token) {
       dispatch(getUser(userid));

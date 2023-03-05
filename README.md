@@ -9,20 +9,17 @@ Determine where to apply tooltips in your project by match configuration:
     import { Tooltips } from '@rohberg/volto-slate-glossary/components';
 
     export default function applyConfig(config) {
-        config.settings = {
-            ...config.settings,
-            appExtras: [
-                ...config.settings.appExtras,
-                {
-                    match: '/documentation',
-                    component: Tooltips,
-                },
-                {
-                    match: '/news',
-                    component: Tooltips,
-                },
-            ],
-        };
+        config.settings.appExtras = [
+            ...config.settings.appExtras,
+            {
+            match: '/documentation',
+            component: Tooltips,
+            },
+            {
+            match: '/news',
+            component: Tooltips,
+            },
+        ];
 
         return config;
     }
@@ -31,7 +28,8 @@ Determine where to apply tooltips in your project by match configuration:
 Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
 
 
-User can opt-out by setting glossarytooltips to false. Add a member field *glossarytooltips*.
+User can opt-out by setting glossarytooltips to false.
+Add a boolean member field *glossarytooltips* for it.
 
 
-This add-on requires Volto with Slate. Be sure to upgrade to Volto >= 16.0.0-alpha.15.
+This add-on requires Volto with Slate editor. Be sure to upgrade to Volto >= 16.0.0-alpha.15.
