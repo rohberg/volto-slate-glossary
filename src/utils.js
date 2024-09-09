@@ -55,26 +55,34 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     glossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
-          var splittedtext;
+          var myre;
+          let new_chunk = [];
           // regex word boundary does ignore umlauts and other non ascii
           if (['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü'].includes(term.term[0])) {
             // let myre = `(?<!\w)${term.term}(?!\w)`;
-            let myre = `(?<=[ ,\.])${term.term}(?=[ ,\.])`;
-            let regExpTerm = new RegExp(myre, 'g');
-            splittedtext = chunk.val.split(regExpTerm).reverse();
+            myre = `(?<=[ ,\.])(${term.term})(?=[ ,\.])`;
           } else {
-            let myre = `\\b${term.term}\\b`;
-            let regExpTerm = new RegExp(myre);
-            splittedtext = chunk.val.split(regExpTerm).reverse();
+            myre = `\\b(${term.term})\\b`;
           }
-          chunk = [{ type: 'text', val: splittedtext.pop() }];
-          while (splittedtext.length > 0) {
-            chunk.push({
+          let regExpTerm = new RegExp(myre, "gi");
+          let chunk_val = chunk.val;
+          let index = 0;
+          while (true) {
+            let res = regExpTerm.exec(chunk.val);
+            if (res === null) {
+              new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
+              break;
+            }
+            if (res.index > 0) {
+              new_chunk.push({ type: 'text', val: chunk_val.slice(index, res.index) });
+            }
+            new_chunk.push({
               type: 'glossarytermtooltip',
-              val: term.term,
+              val: res[0],
             });
-            chunk.push({ type: 'text', val: splittedtext.pop() });
+            index = res.index + res[0].length;
           }
+          chunk = new_chunk;
         }
         return chunk;
       });
@@ -87,7 +95,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     if (el.type === 'text') {
       return applyLineBreakSupport(el.val);
     } else {
-      let idx = glossaryterms.findIndex((variant) => variant.term === el.val);
+      let idx = glossaryterms.findIndex((variant) => variant.term.toLowerCase() === el.val.toLowerCase());
       let definition = glossaryterms[idx]?.definition || '';
       switch (definition.length) {
         case 0:
