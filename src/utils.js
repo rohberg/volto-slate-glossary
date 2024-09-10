@@ -55,16 +55,14 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     glossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
-          var myre;
           let new_chunk = [];
-          // regex word boundary does ignore umlauts and other non ascii
-          if (['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü'].includes(term.term[0])) {
-            // let myre = `(?<!\w)${term.term}(?!\w)`;
-            myre = `(?<=[ ,\.])(${term.term})(?=[ ,\.])`;
-          } else {
-            myre = `\\b(${term.term})\\b`;
-          }
-          let regExpTerm = new RegExp(myre, "gi");
+          // regex word boundary \b ignores umlauts and other non ascii characters.
+          // So we pass the 'v' flag for upgraded unicode support:
+          // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets
+          // And we use '\p{L}' to match any unicode from the 'letter' category.
+          // See https://javascript.info/regexp-unicode
+          let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
+          let regExpTerm = RegExp(myre, "giv");
           let chunk_val = chunk.val;
           let index = 0;
           while (true) {
