@@ -1,8 +1,10 @@
 import React from 'react';
+import config from '@plone/volto/registry';
 import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
+
 
 /**
  * import from @plone/volto-slate Leaf when ready there
@@ -33,6 +35,7 @@ const applyLineBreakSupport = (children) => {
 };
 
 export const TextWithGlossaryTooltips = ({ text }) => {
+  const case_sensitive = config.settings.glossary.case_sensitive;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
@@ -63,7 +66,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           // And we use '\p{L}' to match any unicode from the 'letter' category.
           // See https://javascript.info/regexp-unicode
           let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
-          if (term.term === term.term.toUpperCase()) {
+          if (case_sensitive || term.term === term.term.toUpperCase()) {
             // Search case sensitively: if term is 'REST', we don't want to highlight 'rest'.
             regExpTerm = RegExp(myre, "gv");
           } else {
