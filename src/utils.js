@@ -56,13 +56,20 @@ export const TextWithGlossaryTooltips = ({ text }) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let new_chunk = [];
+          let regExpTerm;
           // regex word boundary \b ignores umlauts and other non ascii characters.
           // So we pass the 'v' flag for upgraded unicode support:
           // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets
           // And we use '\p{L}' to match any unicode from the 'letter' category.
           // See https://javascript.info/regexp-unicode
           let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
-          let regExpTerm = RegExp(myre, "giv");
+          if (term.term === term.term.toUpperCase()) {
+            // Search case sensitively: if term is 'REST', we don't want to highlight 'rest'.
+            regExpTerm = RegExp(myre, "gv");
+          } else {
+            // Search case insensitively.
+            regExpTerm = RegExp(myre, "giv");
+          }
           let chunk_val = chunk.val;
           let index = 0;
           while (true) {
