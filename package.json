@@ -11,7 +11,8 @@
     "react"
   ],
   "scripts": {
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
+    "release": "release-it"
   },
   "addons": [],
   "dependencies": {
@@ -20,5 +21,9 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^8.0.2",
+    "release-it": "^17.6.0"
   }
 }
