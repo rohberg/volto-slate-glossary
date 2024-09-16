@@ -1,8 +1,10 @@
 import React from 'react';
+import config from '@plone/volto/registry';
 import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
+
 
 /**
  * import from @plone/volto-slate Leaf when ready there
@@ -33,6 +35,7 @@ const applyLineBreakSupport = (children) => {
 };
 
 export const TextWithGlossaryTooltips = ({ text }) => {
+  const caseSensitive = config.settings.glossary.caseSensitive;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
@@ -55,26 +58,39 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     glossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
-          var splittedtext;
-          // regex word boundary does ignore umlauts and other non ascii
-          if (['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü'].includes(term.term[0])) {
-            // let myre = `(?<!\w)${term.term}(?!\w)`;
-            let myre = `(?<=[ ,\.])${term.term}(?=[ ,\.])`;
-            let regExpTerm = new RegExp(myre, 'g');
-            splittedtext = chunk.val.split(regExpTerm).reverse();
+          let new_chunk = [];
+          let regExpTerm;
+          // regex word boundary \b ignores umlauts and other non ascii characters.
+          // So we pass the 'v' flag for upgraded unicode support:
+          // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets
+          // And we use '\p{L}' to match any unicode from the 'letter' category.
+          // See https://javascript.info/regexp-unicode
+          let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
+          if (caseSensitive || term.term === term.term.toUpperCase()) {
+            // Search case sensitively: if term is 'REST', we don't want to highlight 'rest'.
+            regExpTerm = RegExp(myre, "gv");
           } else {
-            let myre = `\\b${term.term}\\b`;
-            let regExpTerm = new RegExp(myre);
-            splittedtext = chunk.val.split(regExpTerm).reverse();
+            // Search case insensitively.
+            regExpTerm = RegExp(myre, "giv");
           }
-          chunk = [{ type: 'text', val: splittedtext.pop() }];
-          while (splittedtext.length > 0) {
-            chunk.push({
+          let chunk_val = chunk.val;
+          let index = 0;
+          while (true) {
+            let res = regExpTerm.exec(chunk.val);
+            if (res === null) {
+              new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
+              break;
+            }
+            if (res.index > 0) {
+              new_chunk.push({ type: 'text', val: chunk_val.slice(index, res.index) });
+            }
+            new_chunk.push({
               type: 'glossarytermtooltip',
-              val: term.term,
+              val: res[0],
             });
-            chunk.push({ type: 'text', val: splittedtext.pop() });
+            index = res.index + res[0].length;
           }
+          chunk = new_chunk;
         }
         return chunk;
       });
@@ -87,7 +103,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     if (el.type === 'text') {
       return applyLineBreakSupport(el.val);
     } else {
-      let idx = glossaryterms.findIndex((variant) => variant.term === el.val);
+      let idx = glossaryterms.findIndex((variant) => variant.term.toLowerCase() === el.val.toLowerCase());
       let definition = glossaryterms[idx]?.definition || '';
       switch (definition.length) {
         case 0:

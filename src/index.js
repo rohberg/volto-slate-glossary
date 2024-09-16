@@ -4,6 +4,9 @@ import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
 import { TextWithGlossaryTooltips } from './utils';
 
 export default (config) => {
+  config.settings.glossary = {
+    caseSensitive: false,
+  };
   config.settings.slate.leafs = {
     text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
   };
