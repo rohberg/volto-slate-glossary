@@ -29,13 +29,10 @@ By default we show a tooltip when a word matches case insensitively: when the te
 You can configure this to be case sensitive for all terms, so "Hello" only matches for "Hello":
 
 ```
-config.settings.glossary = {
-...config.settings.glossary,
-    case_sensitive: true,
-}
+config.settings.glossary.caseSensitive = true;
 ```
 
-Regardless of this setting, when you have a fully uppercase term, for example `REST` (REpresentational State Transfer), always only the exact word `REST` gets a tooltip, not `rest` or `Rest`.
+Regardless of this setting, when you have a fully uppercase term, for example `REST` (Representational State Transfer), always only the exact word `REST` gets a tooltip, not `rest` or `Rest`.
 
 Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
 

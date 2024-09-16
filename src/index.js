@@ -4,15 +4,12 @@ import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
 import { TextWithGlossaryTooltips } from './utils';
 
 export default (config) => {
+  config.settings.glossary = {
+    caseSensitive: false,
+  };
   config.settings.slate.leafs = {
     text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
   };
-  config.settings = {
-    ...config.settings,
-    glossary: {
-      case_sensitive: false,
-    }
-  }
   config.views = {
     ...config.views,
     contentTypesViews: {

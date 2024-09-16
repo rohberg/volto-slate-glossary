@@ -35,7 +35,7 @@ const applyLineBreakSupport = (children) => {
 };
 
 export const TextWithGlossaryTooltips = ({ text }) => {
-  const case_sensitive = config.settings.glossary.case_sensitive;
+  const caseSensitive = config.settings.glossary.caseSensitive;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
@@ -66,7 +66,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           // And we use '\p{L}' to match any unicode from the 'letter' category.
           // See https://javascript.info/regexp-unicode
           let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
-          if (case_sensitive || term.term === term.term.toUpperCase()) {
+          if (caseSensitive || term.term === term.term.toUpperCase()) {
             // Search case sensitively: if term is 'REST', we don't want to highlight 'rest'.
             regExpTerm = RegExp(myre, "gv");
           } else {
