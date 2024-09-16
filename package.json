@@ -11,7 +11,8 @@
     "react"
   ],
   "scripts": {
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
+    "release": "release-it"
   },
   "addons": [],
   "dependencies": {
