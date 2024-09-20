@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import config from '@plone/volto/registry';
 import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
+import { TooltipContext } from './components/TooltipContext';
 
 
 /**
@@ -40,6 +41,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     (state) => state.glossarytooltipterms?.result?.items,
   );
   const location = useLocation();
+  let matchedGlossaryTerms = useContext(TooltipContext);
 
   // no tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
@@ -55,7 +57,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
 
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
-    glossaryterms.forEach((term) => {
+    glossaryterms.filter(term => !matchedGlossaryTerms.includes(term.term)).forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let new_chunk = [];
@@ -81,6 +83,8 @@ export const TextWithGlossaryTooltips = ({ text }) => {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
               break;
             }
+            // Term matched. Update matchedGlossaryTerms context!
+            matchedGlossaryTerms.push(term.term)
             if (res.index > 0) {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index, res.index) });
             }

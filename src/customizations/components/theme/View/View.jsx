@@ -27,7 +27,9 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
-import SlotRenderer from '../SlotRenderer/SlotRenderer';
+import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
+
+import { TooltipContext } from '@rohberg/volto-slate-glossary/components/TooltipContext';
 
 /**
  * View container class.
@@ -247,6 +249,7 @@ class View extends Component {
           }
         />
         <SlotRenderer name="aboveContent" content={this.props.content} />
+        <TooltipContext.Provider value={[]}>
         <RenderedView
           key={this.props.content['@id']}
           content={this.props.content}
@@ -254,6 +257,7 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
+        </TooltipContext.Provider>
         <SlotRenderer name="belowContent" content={this.props.content} />
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
