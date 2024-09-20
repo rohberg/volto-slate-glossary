@@ -57,7 +57,10 @@ export const TextWithGlossaryTooltips = ({ text }) => {
 
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
-    glossaryterms.filter(term => !matchedGlossaryTerms.includes(term.term)).forEach((term) => {
+    let remainingGlossaryterms = config.settings.glossary.matchOnlyFirstOccurence
+      ? glossaryterms.filter(term => !matchedGlossaryTerms.includes(term.term))
+      : glossaryterms;
+    remainingGlossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let new_chunk = [];
@@ -79,12 +82,14 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           let index = 0;
           while (true) {
             let res = regExpTerm.exec(chunk.val);
-            if (res === null || (matchedGlossaryTerms.includes(term.term))) {
+            if (res === null || (config.settings.glossary.matchOnlyFirstOccurence && matchedGlossaryTerms.includes(term.term))) {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
               break;
             }
             // Term matched. Update matchedGlossaryTerms context!
-            matchedGlossaryTerms.push(term.term)
+            if (config.settings.glossary.matchOnlyFirstOccurence) {
+              matchedGlossaryTerms.push(term.term)
+            }
             if (res.index > 0) {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index, res.index) });
             }
