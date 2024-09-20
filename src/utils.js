@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import config from '@plone/volto/registry';
 import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
 import { TooltipContext } from './components/TooltipContext';
+import config from '@plone/volto/registry';
 
 
 /**
@@ -79,7 +79,7 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           let index = 0;
           while (true) {
             let res = regExpTerm.exec(chunk.val);
-            if (res === null) {
+            if (res === null || (matchedGlossaryTerms.includes(term.term))) {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
               break;
             }
