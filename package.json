@@ -3,13 +3,27 @@
   "version": "1.0.3",
   "description": "Add tooltips for glossary terms",
   "main": "src/index.js",
+  "author": "Katja Süss, https://github.com/rohberg",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/rohberg/volto-slate-glossary",
   "keywords": [
     "volto-addon",
     "volto",
     "plone",
-    "react"
+    "react",
+    "glossary"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rohberg/volto-slate-glossary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rohberg/volto-slate-glossary/issues"
+  },
   "scripts": {
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
     "release": "release-it"
@@ -17,10 +31,6 @@
   "addons": [],
   "dependencies": {
     "@plone/scripts": "*"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^8.0.2",

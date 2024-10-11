@@ -6,10 +6,15 @@ import { TextWithGlossaryTooltips } from './utils';
 export default (config) => {
   config.settings.glossary = {
     caseSensitive: false,
+    matchOnlyFirstOccurence: false,
   };
+
+  config.views.viewContext['volto-slate-glossary'] = [];
+
   config.settings.slate.leafs = {
     text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
   };
+
   config.views = {
     ...config.views,
     contentTypesViews: {
