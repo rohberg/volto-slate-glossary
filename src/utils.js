@@ -43,6 +43,8 @@ export const TextWithGlossaryTooltips = ({ text }) => {
   );
   const location = useLocation();
 
+  let matchedGlossaryTerms = useViewContext('volto-slate-glossary');
+
   // No tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
   const glossarytooltips = currentuser?.glossarytooltips ?? true;
@@ -55,8 +57,6 @@ export const TextWithGlossaryTooltips = ({ text }) => {
   if (isEditMode || isAddMode || location.pathname === '/' || !__CLIENT__) {
     return text;
   }
-
-  let matchedGlossaryTerms = useViewContext('volto-slate-glossary');
 
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
