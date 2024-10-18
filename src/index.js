@@ -3,7 +3,7 @@ import TermView from './components/TermView';
 import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
 import { TextWithGlossaryTooltips } from './utils';
 
-export default (config) => {
+const applyConfig = (config) => {
   config.settings.glossary = {
     caseSensitive: false,
     matchOnlyFirstOccurence: false,
@@ -32,3 +32,5 @@ export default (config) => {
 
   return config;
 };
+
+export default applyConfig;
