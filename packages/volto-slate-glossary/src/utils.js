@@ -1,10 +1,9 @@
 import React from 'react';
-import config from '@plone/volto/registry';
 import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
-
+import config from '@plone/volto/registry';
 
 /**
  * import from @plone/volto-slate Leaf when ready there
@@ -41,12 +40,13 @@ export const TextWithGlossaryTooltips = ({ text }) => {
   );
   const location = useLocation();
 
-  // no tooltips if user opted out
+  // No tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
   const glossarytooltips = currentuser?.glossarytooltips ?? true;
   if (!glossarytooltips) {
     return text;
   }
+  // No tooltips in edit and add mode
   const isEditMode = location.pathname.slice(-5) === '/edit';
   const isAddMode = location.pathname.slice(-4) === '/add';
   if (isEditMode || isAddMode || location.pathname === '/' || !__CLIENT__) {
@@ -68,10 +68,10 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           let myre = `(?<!\\p{L})(${term.term})(?!\\p{L})`;
           if (caseSensitive || term.term === term.term.toUpperCase()) {
             // Search case sensitively: if term is 'REST', we don't want to highlight 'rest'.
-            regExpTerm = RegExp(myre, "gv");
+            regExpTerm = RegExp(myre, 'gv');
           } else {
             // Search case insensitively.
-            regExpTerm = RegExp(myre, "giv");
+            regExpTerm = RegExp(myre, 'giv');
           }
           let chunk_val = chunk.val;
           let index = 0;
@@ -82,7 +82,10 @@ export const TextWithGlossaryTooltips = ({ text }) => {
               break;
             }
             if (res.index > 0) {
-              new_chunk.push({ type: 'text', val: chunk_val.slice(index, res.index) });
+              new_chunk.push({
+                type: 'text',
+                val: chunk_val.slice(index, res.index),
+              });
             }
             new_chunk.push({
               type: 'glossarytermtooltip',
@@ -103,7 +106,9 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     if (el.type === 'text') {
       return applyLineBreakSupport(el.val);
     } else {
-      let idx = glossaryterms.findIndex((variant) => variant.term.toLowerCase() === el.val.toLowerCase());
+      let idx = glossaryterms.findIndex(
+        (variant) => variant.term.toLowerCase() === el.val.toLowerCase(),
+      );
       let definition = glossaryterms[idx]?.definition || '';
       switch (definition.length) {
         case 0:

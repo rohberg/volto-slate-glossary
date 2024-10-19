@@ -3,13 +3,15 @@ import TermView from './components/TermView';
 import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
 import { TextWithGlossaryTooltips } from './utils';
 
-export default (config) => {
+const applyConfig = (config) => {
   config.settings.glossary = {
     caseSensitive: false,
   };
+
   config.settings.slate.leafs = {
     text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
   };
+
   config.views = {
     ...config.views,
     contentTypesViews: {
@@ -27,3 +29,5 @@ export default (config) => {
 
   return config;
 };
+
+export default applyConfig;
