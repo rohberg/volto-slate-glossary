@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltips are generated  – component Tooltips is rendered in AppExtras 1`] = `
+<div>
+  <div
+    class="hidden-AppExtras-Fetch"
+  />
+  <div
+    class="hidden-AppExtras-CalculateTexts"
+  />
+</div>
+`;
+
+exports[`Tooltips are generated for all occurrences 1`] = `
+<div>
+  <div
+    id="view"
+    tabindex="-1"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      class="ui container"
+      id="page-document"
+    >
+      <h1
+        class="documentFirstHeading"
+      />
+      <p>
+        <span
+          class=""
+        >
+          <span
+            class="glossarytooltip"
+          >
+            Üben
+          </span>
+           macht den Meister.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Wir 
+          <span
+            class="glossarytooltip"
+          >
+            üben
+          </span>
+           das. Die Abkürzung 
+          <span
+            class="glossarytooltip"
+          >
+            AB
+          </span>
+           ist im Glossar erklärt. Wir verwenden 
+          <span
+            class="glossarytooltip"
+          >
+            AB
+          </span>
+           ab Donnerstag.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+          <span
+            class="glossarytooltip"
+          >
+            μg
+          </span>
+           NO2/m3&lt;/strong&gt;
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          In automn, 
+          <span
+            class="glossarytooltip"
+          >
+            Aბㄱ
+          </span>
+           is something you should care about.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Het laatste 
+          <span
+            class="glossarytooltip"
+          >
+            8-uurgemiddelde
+          </span>
+           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Morgen 
+          <span
+            class="glossarytooltip"
+          >
+            üben
+          </span>
+           wir weiter.
+        </span>
+      </p>
+    </div>
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+  <div
+    class="hidden-AppExtras-Fetch"
+  />
+  <div
+    class="hidden-AppExtras-CalculateTexts"
+  />
+</div>
+`;
+
+exports[`Tooltips are generated only case sensitive 1`] = `
+<div>
+  <div
+    id="view"
+    tabindex="-1"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      class="ui container"
+      id="page-document"
+    >
+      <h1
+        class="documentFirstHeading"
+      />
+      <p>
+        <span
+          class=""
+        >
+          Üben macht den Meister.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Wir 
+          <span
+            class="glossarytooltip"
+          >
+            üben
+          </span>
+           das. Die Abkürzung 
+          <span
+            class="glossarytooltip"
+          >
+            AB
+          </span>
+           ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 μg NO2/m3&lt;/strong&gt;
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          In automn, 
+          <span
+            class="glossarytooltip"
+          >
+            Aბㄱ
+          </span>
+           is something you should care about.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Het laatste 
+          <span
+            class="glossarytooltip"
+          >
+            8-uurgemiddelde
+          </span>
+           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Morgen üben wir weiter.
+        </span>
+      </p>
+    </div>
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+  <div
+    class="hidden-AppExtras-Fetch"
+  />
+  <div
+    class="hidden-AppExtras-CalculateTexts"
+  />
+</div>
+`;
+
+exports[`Tooltips are generated only for first occurrences per page 1`] = `
+<div>
+  <div
+    id="view"
+    tabindex="-1"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      class="ui container"
+      id="page-document"
+    >
+      <h1
+        class="documentFirstHeading"
+      />
+      <p>
+        <span
+          class=""
+        >
+          <span
+            class="glossarytooltip"
+          >
+            Üben
+          </span>
+           macht den Meister.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Wir üben das. Die Abkürzung 
+          <span
+            class="glossarytooltip"
+          >
+            AB
+          </span>
+           ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+          <span
+            class="glossarytooltip"
+          >
+            μg
+          </span>
+           NO2/m3&lt;/strong&gt;
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          In automn, 
+          <span
+            class="glossarytooltip"
+          >
+            Aბㄱ
+          </span>
+           is something you should care about.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Het laatste 
+          <span
+            class="glossarytooltip"
+          >
+            8-uurgemiddelde
+          </span>
+           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
+        </span>
+      </p>
+      <p>
+        <span
+          class=""
+        >
+          Morgen üben wir weiter.
+        </span>
+      </p>
+    </div>
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+  <div
+    class="hidden-AppExtras-Fetch"
+  />
+  <div
+    class="hidden-AppExtras-CalculateTexts"
+  />
+</div>
+`;
