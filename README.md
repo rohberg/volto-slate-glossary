@@ -2,7 +2,13 @@
 
 Volto Add-On `@rohberg/volto-slate-glossary` adds tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
 
-![Tooltips @rohberg/volto-slate-glossary](https://github.com/rohberg/volto-slate-glossary/raw/main/public/volto-slate-glossary-tooltips.png)
+[![npm](https://img.shields.io/npm/v/volto-slate-glossary)](https://www.npmjs.com/package/@rohberg/volto-slate-glossary)
+[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://ksuess.github.io/volto-slate-glossary/)
+[![Code analysis checks](https://github.com/ksuess/volto-slate-glossary/actions/workflows/code.yml/badge.svg)](https://github.com/ksuess/volto-slate-glossary/actions/workflows/code.yml)
+[![Unit tests](https://github.com/ksuess/volto-slate-glossary/actions/workflows/unit.yml/badge.svg)](https://github.com/ksuess/volto-slate-glossary/actions/workflows/unit.yml)
+
+
+![Tooltips @rohberg/volto-slate-glossary](https://github.com/rohberg/volto-slate-glossary/raw/main/docs/volto-slate-glossary-tooltips.png)
 
 Determine where to apply tooltips in your project by match configuration:
 
