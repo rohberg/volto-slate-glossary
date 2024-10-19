@@ -1,4 +1,4 @@
-const addons = ['@rohberg/volto-slate-glossary', 'testing'];
+const addons = ['@rohberg/volto-slate-glossary'];
 const theme = '';
 
 module.exports = {
