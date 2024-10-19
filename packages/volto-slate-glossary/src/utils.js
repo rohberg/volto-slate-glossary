@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { flatten } from 'lodash';
 import { Popup } from 'semantic-ui-react';
 import { useLocation } from 'react-router-dom';
+import { useViewContext } from '@plone/volto/components/theme/View/View';
 import config from '@plone/volto/registry';
 
 /**
@@ -35,6 +36,8 @@ const applyLineBreakSupport = (children) => {
 
 export const TextWithGlossaryTooltips = ({ text }) => {
   const caseSensitive = config.settings.glossary.caseSensitive;
+  const matchOnlyFirstOccurence =
+    config.settings.glossary.matchOnlyFirstOccurence;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
@@ -53,9 +56,16 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     return text;
   }
 
+  let matchedGlossaryTerms = useViewContext('volto-slate-glossary');
+
   let result = [{ type: 'text', val: text }];
   if (glossaryterms !== undefined) {
-    glossaryterms.forEach((term) => {
+    let remainingGlossaryterms = matchOnlyFirstOccurence
+      ? glossaryterms.filter(
+          (term) => !matchedGlossaryTerms.includes(term.term),
+        )
+      : glossaryterms;
+    remainingGlossaryterms.forEach((term) => {
       result = result.map((chunk) => {
         if (chunk.type === 'text') {
           let new_chunk = [];
@@ -77,9 +87,17 @@ export const TextWithGlossaryTooltips = ({ text }) => {
           let index = 0;
           while (true) {
             let res = regExpTerm.exec(chunk.val);
-            if (res === null) {
+            if (
+              res === null ||
+              (matchOnlyFirstOccurence &&
+                matchedGlossaryTerms.includes(term.term))
+            ) {
               new_chunk.push({ type: 'text', val: chunk_val.slice(index) });
               break;
+            }
+            // Term matched. Update context!
+            if (matchOnlyFirstOccurence) {
+              matchedGlossaryTerms.push(term.term);
             }
             if (res.index > 0) {
               new_chunk.push({
