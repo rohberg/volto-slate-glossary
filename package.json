@@ -35,7 +35,8 @@
   "dependencies": {
     "@plone/volto": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@rohberg/volto-slate-glossary": "workspace:*"
+    "@rohberg/volto-slate-glossary": "workspace:*",
+    "testing": "workspace:*"
   },
   "devDependencies": {
     "mrs-developer": "^2.2.0"
