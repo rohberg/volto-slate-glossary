@@ -8,7 +8,8 @@ export const MY_NAMESPACE = '4549d0a3-5fc2-4a94-bf96-eb7ddf5363a4';
 export const TextWithGlossaryTooltips = ({ text }) => {
   // Read jotai atom and return value with the appropriate key.
   const tooltippedTexts = useAtomValue(tooltippedTextsAtom);
-  const location = useSelector((state) => state.router.location);
+
+  const location = useSelector((state) => state.router?.location);
 
   // No tooltips if user opted out
   const currentuser = useSelector((state) => state.users?.user);
@@ -17,10 +18,12 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     return text;
   }
 
-  // No tooltips in edit and add mode
+  // No tooltips on home page, in edit mode, and add mode
+  if (location === undefined) {
+    return text;
+  }
   const isEditMode = location.pathname.slice(-5) === '/edit';
-  const isAddMode = location.pathname.slice(-4) === '/add';
-  if (isEditMode || isAddMode || location.pathname === '/' || !__CLIENT__) {
+  if (isEditMode || location.pathname === '/' || !__CLIENT__) {
     return text;
   }
 
