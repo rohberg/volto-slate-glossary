@@ -14,7 +14,7 @@ const applyConfig = (config) => {
   // config.settings.appExtras = [
   //   ...config.settings.appExtras,
   //   {
-  //     match: '/',
+  //     match: '/documentation',
   //     component: Tooltips,
   //   },
   // ];

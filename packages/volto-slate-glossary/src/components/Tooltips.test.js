@@ -26,7 +26,7 @@ const installTooltips = (config) => {
   config.settings.appExtras = [
     // ...config.settings.appExtras,
     {
-      match: '/',
+      match: '/test',
       component: Tooltips,
     },
   ];
@@ -186,175 +186,213 @@ const actions = {
   ],
 };
 
-describe('Tooltips are generated', () => {
-  let baseStore = {
-    router: {
-      location: { pathname: '/test' },
-    },
-    actions: { actions },
-    content: {
-      data: {
-        '@type': 'Document',
-        blocks: {
-          '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c': {
-            '@type': 'slate',
-            plaintext: 'Morgen üben wir weiter.',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'Morgen üben wir weiter.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          '5bdcc024-9715-4711-bb61-05019a4b8d1e': {
-            '@type': 'slate',
-            plaintext: 'Üben macht den Meister.',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'Üben macht den Meister.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          '713f6a98-68af-4935-860b-9f17375368d8': {
-            '@type': 'slate',
-            plaintext:
-              'Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          '00000001-68af-4935-860b-9f17375368d8': {
-            '@type': 'slate',
-            plaintext:
-              'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 μg NO2/m3',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 μg NO2/m3</strong>',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          '00000002-68af-4935-860b-9f17375368d8': {
-            '@type': 'slate',
-            plaintext: 'In automn, Aბㄱ is something you should care about.',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'In automn, Aბㄱ is something you should care about.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          '00000003-68af-4935-860b-9f17375368d8': {
-            '@type': 'slate',
-            plaintext:
-              'Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.',
-            value: [
-              {
-                children: [
-                  {
-                    text: 'Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.',
-                  },
-                ],
-                type: 'p',
-              },
-            ],
-          },
-          'e4ceaac9-669f-4df4-937a-fb762f7b289e': {
-            '@type': 'title',
-          },
-        },
-        blocks_layout: {
-          items: [
-            'e4ceaac9-669f-4df4-937a-fb762f7b289e',
-            '5bdcc024-9715-4711-bb61-05019a4b8d1e',
-            '713f6a98-68af-4935-860b-9f17375368d8',
-            '00000001-68af-4935-860b-9f17375368d8',
-            '00000002-68af-4935-860b-9f17375368d8',
-            '00000003-68af-4935-860b-9f17375368d8',
-            '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c',
+const initialStore = {
+  router: {
+    location: { pathname: '/test' },
+  },
+  actions: { actions },
+  content: {
+    data: {
+      '@type': 'Document',
+      blocks: {
+        '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c': {
+          '@type': 'slate',
+          plaintext: 'Morgen üben wir weiter.',
+          value: [
+            {
+              children: [
+                {
+                  text: 'Morgen üben wir weiter.',
+                },
+              ],
+              type: 'p',
+            },
           ],
         },
+        '5bdcc024-9715-4711-bb61-05019a4b8d1e': {
+          '@type': 'slate',
+          plaintext: 'Üben macht den Meister.',
+          value: [
+            {
+              children: [
+                {
+                  text: 'Üben macht den Meister.',
+                },
+              ],
+              type: 'p',
+            },
+          ],
+        },
+        '713f6a98-68af-4935-860b-9f17375368d8': {
+          '@type': 'slate',
+          plaintext:
+            'Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.',
+          value: [
+            {
+              children: [
+                {
+                  text: 'Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.',
+                },
+              ],
+              type: 'p',
+            },
+          ],
+        },
+        '00000001-68af-4935-860b-9f17375368d8': {
+          '@type': 'slate',
+          plaintext:
+            'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 μg NO2/m3',
+          value: [
+            {
+              children: [
+                {
+                  text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 μg NO2/m3</strong>',
+                },
+              ],
+              type: 'p',
+            },
+          ],
+        },
+        '00000002-68af-4935-860b-9f17375368d8': {
+          '@type': 'slate',
+          plaintext: 'In automn, Aბㄱ is something you should care about.',
+          value: [
+            {
+              children: [
+                {
+                  text: 'In automn, Aბㄱ is something you should care about.',
+                },
+              ],
+              type: 'p',
+            },
+          ],
+        },
+        '00000003-68af-4935-860b-9f17375368d8': {
+          '@type': 'slate',
+          plaintext:
+            'Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.',
+          value: [
+            {
+              children: [
+                {
+                  text: 'Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.',
+                },
+              ],
+              type: 'p',
+            },
+          ],
+        },
+        'e4ceaac9-669f-4df4-937a-fb762f7b289e': {
+          '@type': 'title',
+        },
       },
-      get: { error: null },
-    },
-    userSession: { token: null },
-    apierror: {},
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
-    glossarytooltipterms: {
-      error: null,
-      hasErrror: false,
-      result: {
+      blocks_layout: {
         items: [
-          {
-            definition: [
-              '<p><span class="">Eine Tätigkeit ausführen um vertrauter mit ihr zu werden und sie zu meistern.</span></p>',
-            ],
-            term: 'üben',
-          },
-          {
-            definition: [
-              '<p><span class="">Microgram of één miljoenste gram.</span></p>',
-            ],
-            term: 'µg',
-          },
-          {
-            definition: [
-              '<p><span class="">No clue what that should be!?</span></p>',
-            ],
-            term: 'Aბㄱ',
-          },
-          {
-            definition: ['<p><span class="">Arbeitsbegleitung</span></p>'],
-            term: 'AB',
-          },
-          {
-            definition: [
-              '<p><span class="">Voor het hoogste 8-uurgemiddelde van een dag berekenen we voor elke 8 uur het gemiddelde en nemen dan de hoogste waarde.  Het eerste 8-urgemiddelde van een dag loopt van 17:00 uur op de dag daarvoor tot 1:00 uur op de dag zelf.</span></p>',
-            ],
-            term: '8-uurgemiddelde',
-          },
+          'e4ceaac9-669f-4df4-937a-fb762f7b289e',
+          '5bdcc024-9715-4711-bb61-05019a4b8d1e',
+          '713f6a98-68af-4935-860b-9f17375368d8',
+          '00000001-68af-4935-860b-9f17375368d8',
+          '00000002-68af-4935-860b-9f17375368d8',
+          '00000003-68af-4935-860b-9f17375368d8',
+          '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c',
         ],
-        items_total: 1,
       },
-      loadingResults: false,
     },
-  };
+    get: { error: null },
+  },
+  userSession: { token: null },
+  apierror: {},
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+  glossarytooltipterms: {
+    error: null,
+    hasErrror: false,
+    result: {
+      items: [
+        {
+          definition: [
+            '<p><span class="">Eine Tätigkeit ausführen um vertrauter mit ihr zu werden und sie zu meistern.</span></p>',
+          ],
+          term: 'üben',
+        },
+        {
+          definition: [
+            '<p><span class="">Microgram of één miljoenste gram.</span></p>',
+          ],
+          term: 'µg',
+        },
+        {
+          definition: [
+            '<p><span class="">No clue what that should be!?</span></p>',
+          ],
+          term: 'Aბㄱ',
+        },
+        {
+          definition: ['<p><span class="">Arbeitsbegleitung</span></p>'],
+          term: 'AB',
+        },
+        {
+          definition: [
+            '<p><span class="">Voor het hoogste 8-uurgemiddelde van een dag berekenen we voor elke 8 uur het gemiddelde en nemen dan de hoogste waarde.  Het eerste 8-urgemiddelde van een dag loopt van 17:00 uur op de dag daarvoor tot 1:00 uur op de dag zelf.</span></p>',
+          ],
+          term: '8-uurgemiddelde',
+        },
+      ],
+      items_total: 1,
+    },
+    loadingResults: false,
+  },
+};
 
-  test('for all occurrences', async () => {
+describe('Tooltips divers', () => {
+  let baseStore = initialStore;
+
+  it(" – NO tooltips if route doesn't match configuration", () => {
+    const store = mockStore(baseStore);
+    config.settings.appExtras = [];
+    const { container } = render(
+      <Provider store={store}>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
+      </Provider>,
+    );
+
+    expect(container).toMatchSnapshot();
+    expect(container).toHaveTextContent('Üben macht den Meister');
+  });
+
+  it(' – component Tooltips is rendered in AppExtras', () => {
+    const store = mockStore(baseStore);
+    config.settings.appExtras = [
+      {
+        match: '/test',
+        component: Tooltips,
+      },
+    ];
+    const { container } = render(
+      <Provider store={store}>
+        <AppExtras pathname="/test"></AppExtras>
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Tooltips', () => {
+  let baseStore = initialStore;
+
+  test('are generated for all occurrences', async () => {
     const store = mockStore(baseStore);
     const { container } = render(
       <Provider store={store}>
         <>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/"></AppExtras>
+          <AppExtras pathname="/test"></AppExtras>
         </>
       </Provider>,
     );
@@ -364,7 +402,7 @@ describe('Tooltips are generated', () => {
     expect(container).toHaveTextContent('Üben macht den Meister');
   });
 
-  test('only for first occurrences per page', async () => {
+  test('are generated only for first occurrences per page', async () => {
     const store = mockStore(baseStore);
     config.settings.glossary.matchOnlyFirstOccurence = true;
     const { container } = render(
@@ -372,7 +410,7 @@ describe('Tooltips are generated', () => {
         <>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/"></AppExtras>
+          <AppExtras pathname="/test"></AppExtras>
         </>
       </Provider>,
     );
@@ -382,7 +420,7 @@ describe('Tooltips are generated', () => {
     expect(container).toHaveTextContent('Üben macht den Meister');
   });
 
-  test('only case sensitive', async () => {
+  test('are generated only case sensitive', async () => {
     const store = mockStore(baseStore);
     config.settings.glossary.caseSensitive = true;
     const { container } = render(
@@ -390,7 +428,7 @@ describe('Tooltips are generated', () => {
         <>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/"></AppExtras>
+          <AppExtras pathname="/test"></AppExtras>
         </>
       </Provider>,
     );
@@ -398,15 +436,5 @@ describe('Tooltips are generated', () => {
     await waitFor(() => {});
     expect(container).toMatchSnapshot();
     expect(container).toHaveTextContent('Üben macht den Meister');
-  });
-
-  it(' – component Tooltips is rendered in AppExtras', () => {
-    const store = mockStore(baseStore);
-    const { container } = render(
-      <Provider store={store}>
-        <AppExtras pathname="/"></AppExtras>
-      </Provider>,
-    );
-    expect(container).toMatchSnapshot();
   });
 });

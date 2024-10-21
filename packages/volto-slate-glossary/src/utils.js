@@ -34,5 +34,6 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     return text;
   }
   let uid = uuidv5(text, MY_NAMESPACE);
-  return tooltippedTexts[uid];
+  // No match in store if this route is not configured for tooltips. Return text unchanged.
+  return tooltippedTexts[uid] ? tooltippedTexts[uid] : text;
 };
