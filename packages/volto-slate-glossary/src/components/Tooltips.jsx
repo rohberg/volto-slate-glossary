@@ -64,7 +64,7 @@ const CalculateTexts = () => {
 
 /**
  * import from @plone/volto-slate Leaf when ready there
- * @param {String} children text to be decorated
+ * @param {string} children text to be decorated
  */
 export const applyLineBreakSupport = (children) => {
   const klass = undefined;
@@ -90,6 +90,12 @@ export const applyLineBreakSupport = (children) => {
     : children;
 };
 
+/**
+ * Enhance leaf text with tooltips
+ * @param {string} text Leaf text
+ * @param {string|Array} remainingGlossaryterms Glossary terms not matched before
+ * @returns Array of nodes
+ */
 export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
   const caseSensitive = config.settings.glossary.caseSensitive;
   const matchOnlyFirstOccurence =
@@ -150,6 +156,7 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
       result = _.flatten(result);
     });
   }
+  // Array of { type: 'text', val: text }, { type: 'glossarytermtooltip', val: text }
   result = _.flatten(result);
 
   return [
@@ -239,6 +246,7 @@ const calculateTexts = (blocks, blocks_layout, glossaryterms) => {
             remainingGlossaryterms = newTerms;
           });
         } else {
+          // Handle nested blocks
           if (blocks[blockid].blocks && blocks[blockid].blocks_layout) {
             iterateOverBlocks(
               blocks[blockid].blocks,
