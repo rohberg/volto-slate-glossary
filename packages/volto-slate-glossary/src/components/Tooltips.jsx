@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { atom, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import _ from 'lodash';
 import { Text } from 'slate';
 import { v5 as uuidv5 } from 'uuid';
@@ -9,23 +9,11 @@ import { Popup } from 'semantic-ui-react';
 import { getUser } from '@plone/volto/actions';
 import { getTooltipTerms } from '../actions';
 import { MY_NAMESPACE } from '../utils';
+import { tooltippedTextsAtom } from '../utils';
 import config from '@plone/volto/registry';
 
-// jotai store for tooltip enhanced slate leafs
-export const tooltippedTextsAtom = atom({});
-
-const Tooltips = () => {
-  return (
-    <>
-      <Fetch />
-      <CalculateTexts />
-    </>
-  );
-};
-
-const Fetch = () => {
+export const FetchTooltipTerms = ({ token }) => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.userSession?.token);
 
   useEffect(() => {
     dispatch(getTooltipTerms());
@@ -41,23 +29,36 @@ const Fetch = () => {
   return <div className="hidden-AppExtras-Fetch"></div>;
 };
 
-const CalculateTexts = () => {
+const Tooltips = (props) => {
+  return (
+    <>
+      <CalculateTexts {...props} />
+    </>
+  );
+};
+
+const CalculateTexts = ({ pathname }) => {
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
   const blocks_layout = useSelector(
-    (state) => state.content.data?.blocks_layout,
+    (state) => state.content?.data?.blocks_layout,
   );
-  const blocks = useSelector((state) => state.content.data?.blocks);
+  const blocks = useSelector((state) => state.content?.data?.blocks);
+
+  // We can't use atom Family as pathname is not known here.
   const setTooltippedTexts = useSetAtom(tooltippedTextsAtom);
 
   useEffect(() => {
     if (glossaryterms) {
       let texts = calculateTexts(blocks, blocks_layout, glossaryterms);
-      // Update jotai atom
-      setTooltippedTexts(texts);
+      // Store texts and pathname in atom
+      setTooltippedTexts({ pathname: pathname, texts: texts });
+      // return () => {
+      //   setTooltippedTexts({ pathname: undefined, texts: [] });
+      // };
     }
-  }, [blocks, blocks_layout, glossaryterms, setTooltippedTexts]);
+  }, [blocks, blocks_layout, glossaryterms, pathname, setTooltippedTexts]);
 
   return <div className="hidden-AppExtras-CalculateTexts"></div>;
 };
@@ -238,6 +239,9 @@ const calculateTexts = (blocks, blocks_layout, glossaryterms) => {
               return;
             }
             let key = uuidv5(str, MY_NAMESPACE);
+            if (Object.keys(result).includes(key)) {
+              return;
+            }
             let [value, newTerms] = enhanceTextWithTooltips(
               str,
               remainingGlossaryterms,

@@ -121,9 +121,6 @@ exports[`Tooltips are generated for all occurrences 1`] = `
     />
   </div>
   <div
-    class="hidden-AppExtras-Fetch"
-  />
-  <div
     class="hidden-AppExtras-CalculateTexts"
   />
 </div>
@@ -226,9 +223,6 @@ exports[`Tooltips are generated only case sensitive 1`] = `
       id="Portal"
     />
   </div>
-  <div
-    class="hidden-AppExtras-Fetch"
-  />
   <div
     class="hidden-AppExtras-CalculateTexts"
   />
@@ -338,9 +332,6 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
     />
   </div>
   <div
-    class="hidden-AppExtras-Fetch"
-  />
-  <div
     class="hidden-AppExtras-CalculateTexts"
   />
 </div>
@@ -424,9 +415,6 @@ exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1
 
 exports[`Tooltips divers  – component Tooltips is rendered in AppExtras 1`] = `
 <div>
-  <div
-    class="hidden-AppExtras-Fetch"
-  />
   <div
     class="hidden-AppExtras-CalculateTexts"
   />
