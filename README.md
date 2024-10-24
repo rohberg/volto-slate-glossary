@@ -39,6 +39,13 @@ config.settings.glossary.caseSensitive = true;
 
 Regardless of this setting, when you have a fully uppercase term, for example `REST` (Representational State Transfer), always only the exact word `REST` gets a tooltip, not `rest` or `Rest`.
 
+By default we show a tooltip for all matches on a page.
+You can configure this to only show a tooltip for the first match:
+
+```
+config.settings.glossary.matchOnlyFirstOccurence = true;
+```
+
 Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
 
 
