@@ -192,6 +192,12 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
           >
             <Popup.Content>
               <div
+                className="tooltip_header"
+                dangerouslySetInnerHTML={{
+                  __html: el.val,
+                }}
+              />
+              <div
                 className="tooltip_content"
                 dangerouslySetInnerHTML={{
                   __html: definition,
