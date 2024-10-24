@@ -32,7 +32,65 @@ ADDON_NAME='volto-slate-glossary'
 help: ## Show this help
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
-# Dev Helpers
+
+
+###########################################
+# Backend
+###########################################
+.PHONY: backend-install
+backend-install:  ## Create virtualenv and install Plone
+	$(MAKE) -C "./backend/" install
+	$(MAKE) backend-create-site
+
+.PHONY: backend-build
+backend-build:  ## Build Backend
+	$(MAKE) -C "./backend/" install
+
+.PHONY: backend-create-site
+backend-create-site: ## Create a Plone site with default content
+	$(MAKE) -C "./backend/" create-site
+
+.PHONY: backend-update-example-content
+backend-update-example-content: ## Export example content inside package
+	$(MAKE) -C "./backend/" update-example-content
+
+.PHONY: backend-start
+backend-start: ## Start Plone Backend
+	$(MAKE) -C "./backend/" start
+
+.PHONY: backend-test
+backend-test:  ## Test backend codebase
+	@echo "Test backend"
+	$(MAKE) -C "./backend/" test
+
+# .PHONY: install
+# install:  ## Install
+# 	@echo "Install Backend & Frontend"
+# 	if [ -d $(GIT_FOLDER) ]; then $(PRE_COMMIT) install; else echo "$(RED) Not installing pre-commit$(RESET)";fi
+# 	$(MAKE) backend-install
+# 	$(MAKE) frontend-install
+
+# .PHONY: start
+# start:  ## Start
+# 	@echo "Starting application"
+# 	$(MAKE) backend-start
+# 	$(MAKE) frontend-start
+
+# .PHONY: clean
+# clean:  ## Clean installation
+# 	@echo "Clean installation"
+# 	$(MAKE) -C "./backend/" clean
+# 	$(MAKE) -C "./frontend/" clean
+
+# .PHONY: check
+# check:  ## Lint and Format codebase
+# 	@echo "Lint and Format codebase"
+# 	$(PRE_COMMIT) run -a
+
+
+###########################################
+# Frontend
+###########################################
 
 .PHONY: install
 install: ## Installs the add-on in a development environment

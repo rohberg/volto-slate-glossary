@@ -1,4 +1,4 @@
-const addons = ['@rohberg/volto-slate-glossary'];
+const addons = ['@rohberg/volto-slate-glossary', 'policy'];
 const theme = '';
 
 module.exports = {
