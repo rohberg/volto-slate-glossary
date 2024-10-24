@@ -8,7 +8,8 @@ export const tooltippedTextsAtom = atom({ pathname: undefined, texts: [] });
 export const MY_NAMESPACE = '4549d0a3-5fc2-4a94-bf96-eb7ddf5363a4';
 
 export const TextWithGlossaryTooltips = ({ text }) => {
-  const { pathname } = useSelector((state) => state.router?.location);
+  const location = useSelector((state) => state.router?.location);
+  const pathname = location?.pathname;
 
   // Read Jotai atom and return value with the appropriate key.
   const tooltippedTexts = useAtomValue(tooltippedTextsAtom);
