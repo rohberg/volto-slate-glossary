@@ -97,7 +97,7 @@ install: ## Installs the add-on in a development environment
 	@echo "$(GREEN)Install$(RESET)"
 	if [ -d $(GIT_FOLDER) ]; then $(PRE_COMMIT) install; else echo "$(RED) Not installing pre-commit$(RESET)";fi
 	pnpm dlx mrs-developer missdev --no-config --fetch-https
-	pnpm i --force
+	pnpm i
 	make build-deps
 
 .PHONY: start
