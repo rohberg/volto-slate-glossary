@@ -49,6 +49,7 @@ payload = {
     "profile_id": _DEFAULT_PROFILE,
     "extension_ids": [
         "project.title:default",
+        "collective.glossary:default",
     ],
     "setup_content": False,
     "default_language": "en",
