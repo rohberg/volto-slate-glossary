@@ -99,8 +99,8 @@ export const applyLineBreakSupport = (children) => {
  */
 export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
   const caseSensitive = config.settings.glossary.caseSensitive;
-  const matchOnlyFirstOccurence =
-    config.settings.glossary.matchOnlyFirstOccurence;
+  const { matchOnlyFirstOccurence, mentionTermInTooltip } =
+    config.settings.glossary;
   let result = [{ type: 'text', val: text }];
   let matchedGlossaryTerms = [];
   if (remainingGlossaryterms.length > 0) {
@@ -190,7 +190,9 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
             key={j}
             className="tooltip"
           >
-            <Popup.Header>{el.val}</Popup.Header>
+            {mentionTermInTooltip ? (
+              <Popup.Header>{el.val}</Popup.Header>
+            ) : null}
             <Popup.Content>
               <div
                 className="tooltip_content"

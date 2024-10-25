@@ -9,6 +9,7 @@ const applyConfig = (config) => {
     caseSensitive: false,
     matchOnlyFirstOccurence: false,
     showAlphabetNavigation: true,
+    mentionTermInTooltip: false,
   };
 
   config.settings.slate.leafs = {

@@ -1,3 +1,1 @@
-Show a header in the tooltip.
-This repeats the term, which can look nice.
-@mauritsvanrees
+Mention the term in the header of its tooltip. @mauritsvanrees, @ksuess
