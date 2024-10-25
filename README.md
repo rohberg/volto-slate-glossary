@@ -46,7 +46,8 @@ You can configure this to only show a tooltip for the first match:
 config.settings.glossary.matchOnlyFirstOccurence = true;
 ```
 
-Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
+Install Plone add-on [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
+This provides the content type `glossary`.
 
 
 User can opt-out by setting glossarytooltips to false.
