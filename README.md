@@ -2,10 +2,9 @@
 
 Volto Add-On `@rohberg/volto-slate-glossary` adds tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
 
-[![npm](https://img.shields.io/npm/v/volto-slate-glossary)](https://www.npmjs.com/package/@rohberg/volto-slate-glossary)
-[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://ksuess.github.io/volto-slate-glossary/)
-[![Code analysis checks](https://github.com/ksuess/volto-slate-glossary/actions/workflows/code.yml/badge.svg)](https://github.com/ksuess/volto-slate-glossary/actions/workflows/code.yml)
-[![Unit tests](https://github.com/ksuess/volto-slate-glossary/actions/workflows/unit.yml/badge.svg)](https://github.com/ksuess/volto-slate-glossary/actions/workflows/unit.yml)
+[![npm](https://img.shields.io/npm/v/@rohberg/volto-slate-glossary)](https://www.npmjs.com/package/@rohberg/volto-slate-glossary)
+[![Unit tests](https://github.com/rohberg/volto-slate-glossary/actions/workflows/unit.yml/badge.svg)](https://github.com/rohberg/volto-slate-glossary/actions/workflows/unit.yml)
+[![Code analysis checks](https://github.com/rohberg/volto-slate-glossary/actions/workflows/code.yml/badge.svg)](https://github.com/rohberg/volto-slate-glossary/actions/workflows/code.yml)
 
 
 ![Tooltips @rohberg/volto-slate-glossary](https://github.com/rohberg/volto-slate-glossary/raw/main/docs/volto-slate-glossary-tooltips.png)
@@ -40,7 +39,15 @@ config.settings.glossary.caseSensitive = true;
 
 Regardless of this setting, when you have a fully uppercase term, for example `REST` (Representational State Transfer), always only the exact word `REST` gets a tooltip, not `rest` or `Rest`.
 
-Install Plone Add-On [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
+By default we show a tooltip for all matches on a page.
+You can configure this to only show a tooltip for the first match:
+
+```
+config.settings.glossary.matchOnlyFirstOccurence = true;
+```
+
+Install Plone add-on [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
+This provides the content type `glossary`.
 
 
 User can opt-out by setting glossarytooltips to false.

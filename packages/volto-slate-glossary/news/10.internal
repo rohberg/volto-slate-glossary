@@ -1,0 +1,2 @@
+New concept: Instead of generating the tooltip enhanced markup in each Slate leaf,
+we generate all tooltip enhanced leaf texts on route change, store them with jotai atom and use the appropriate ones in the leafs. @ksuess
