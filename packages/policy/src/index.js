@@ -5,6 +5,7 @@ const applyConfig = (config) => {
   config.settings.glossary.caseSensitive = false;
   config.settings.glossary.matchOnlyFirstOccurence = false;
   config.settings.glossary.showAlphabetNavigation = true;
+  config.settings.glossary.mentionTermInTooltip = false;
 
   // Tooltips everywhere
   config.settings.appExtras = [

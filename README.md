@@ -55,3 +55,17 @@ config.settings.glossary.matchOnlyFirstOccurence = true;
 
 User can opt-out by setting glossarytooltips to false.
 Add a boolean member field *glossarytooltips* for it.
+
+## Further configurations
+
+Hide alphabet navigation of glossary view:
+
+```js
+config.settings.glossary.showAlphabetNavigation = false;
+```
+
+Show glossary term in tooltips header:
+
+```js
+config.settings.glossary.mentionTermInTooltip = true;
+```

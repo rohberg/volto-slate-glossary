@@ -71,19 +71,19 @@ export const applyLineBreakSupport = (children) => {
   const klass = undefined;
 
   return typeof children === 'string'
-    ? children.split('\n').map((t, i) => {
+    ? children.split('\n').map((toot, i) => {
         return (
           <React.Fragment key={`${i}`}>
             {children.indexOf('\n') > -1 &&
             children.split('\n').length - 1 > i ? (
               <>
-                {klass ? <span className={klass}>{t}</span> : t}
+                {klass ? <span className={klass}>{toot}</span> : toot}
                 <br />
               </>
             ) : klass ? (
-              <span className={klass}>{t}</span>
+              <span className={klass}>{toot}</span>
             ) : (
-              t
+              toot
             )}
           </React.Fragment>
         );
@@ -99,8 +99,8 @@ export const applyLineBreakSupport = (children) => {
  */
 export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
   const caseSensitive = config.settings.glossary.caseSensitive;
-  const matchOnlyFirstOccurence =
-    config.settings.glossary.matchOnlyFirstOccurence;
+  const { matchOnlyFirstOccurence, mentionTermInTooltip } =
+    config.settings.glossary;
   let result = [{ type: 'text', val: text }];
   let matchedGlossaryTerms = [];
   if (remainingGlossaryterms.length > 0) {
@@ -190,6 +190,9 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
             key={j}
             className="tooltip"
           >
+            {mentionTermInTooltip ? (
+              <Popup.Header>{el.val}</Popup.Header>
+            ) : null}
             <Popup.Content>
               <div
                 className="tooltip_content"

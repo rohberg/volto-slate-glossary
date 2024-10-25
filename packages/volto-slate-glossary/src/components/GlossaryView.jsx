@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Container } from 'semantic-ui-react';
 import cx from 'classnames';
 import { getGlossaryTerms } from '../actions';
 import config from '@plone/volto/registry';
