@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.1.0 (2024-10-25)
+
+### Feature
+
+- Show an alphabet navigation on glossary. Clicking a letter scrolls the entries for this letter into view. @mauritsvanrees, @ksuess [#11](https://github.com/rohberg/volto-slate-glossary/issue/11)
+- Add option to mention the term in the header of its tooltip. @mauritsvanrees, @ksuess [#12](https://github.com/rohberg/volto-slate-glossary/issue/12)
+
 ## 2.0.1 (2024-10-25)
 
 ## 2.0.0 (2024-10-25)
