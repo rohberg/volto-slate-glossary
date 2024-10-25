@@ -1,3 +1,4 @@
 # Contributors
 
-- Plone Foundation [collective@plone.org]
+- Katja Süss [@ksuess]
+- Maurits van Rees [@mauritsvanrees]
