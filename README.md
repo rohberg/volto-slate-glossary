@@ -14,7 +14,7 @@ This provides the content type `glossary`.
 
 Determine where to apply tooltips in your project by match configuration:
 
-```javascript
+```js
     import { Tooltips } from '@rohberg/volto-slate-glossary/components';
 
     export default function applyConfig(config) {
@@ -38,7 +38,7 @@ By default we show a tooltip when a word matches case insensitively: when the te
 
 You can configure this to be case sensitive for all terms, so "Hello" only matches for "Hello":
 
-```
+```js
 config.settings.glossary.caseSensitive = true;
 ```
 
