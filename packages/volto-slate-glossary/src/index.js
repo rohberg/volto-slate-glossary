@@ -8,6 +8,7 @@ const applyConfig = (config) => {
   config.settings.glossary = {
     caseSensitive: false,
     matchOnlyFirstOccurence: false,
+    showAlphabetNavigation: true,
   };
 
   config.settings.slate.leafs = {

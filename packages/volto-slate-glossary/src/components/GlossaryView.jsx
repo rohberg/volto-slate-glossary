@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Container } from 'semantic-ui-react';
+import cx from 'classnames';
 import { getGlossaryTerms } from '../actions';
+import config from '@plone/volto/registry';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const showAlphabetNavigation =
+  config.settings?.glossary?.showAlphabetNavigation || true;
+
 const GlossaryView = ({ content }) => {
   const dispatch = useDispatch();
   const pathname = useSelector((state) => state.router.location.pathname);
@@ -12,41 +18,49 @@ const GlossaryView = ({ content }) => {
     dispatch(getGlossaryTerms());
   }, [dispatch, pathname]);
 
-  let glossaryentries = useSelector(
+  const glossaryentries = useSelector(
     (state) => state.glossaryterms.result.items,
   );
+  const lettersWithTerm = Object.keys(glossaryentries || {});
 
   return (
-    <div id="page-document" className="q-container">
-      <div className="blocks-group-wrapper transparent">
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
+    <Container className="view-wrapper glossary-view">
+      <article id="content">
+        <header>
+          <h1 className="documentFirstHeading">{content.title}</h1>
+          {content.description && (
+            <p className="documentDescription">{content.description}</p>
+          )}
+        </header>
 
-        <div className="glossaryAlphabet">
-          {alphabet.split('').map((letter) => (
-            <Link
-              key={letter}
-              to={'#' + letter}
-              className="alphabetLetter"
-              onClick={() => {
-                document
-                  .getElementById(letter)
-                  ?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <span>{letter}</span>
-            </Link>
-          ))}
-        </div>
+        {showAlphabetNavigation ? (
+          <div className="glossaryAlphabet">
+            {alphabet.split('').map((letter) => (
+              <Link
+                key={letter}
+                to={'#' + letter}
+                className={cx(
+                  'alphabetLetter',
+                  `${!lettersWithTerm.includes(letter) ? 'unmatched' : 'matched'}`,
+                )}
+                onClick={() => {
+                  document
+                    .getElementById(letter)
+                    ?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span>{letter}</span>
+              </Link>
+            ))}
+          </div>
+        ) : null}
 
-        <section className="glossary">
+        <section id="content-core" className="glossary">
           {Object.keys(glossaryentries || {})?.map((letter) => (
             <div key={letter}>
-              <a id={letter} anchor={letter} href={false}>
-                <h2 className="letter">{letter}</h2>
-              </a>
+              <h2 id={letter} className="letter">
+                {letter}
+              </h2>
               {glossaryentries[letter].map((item) => (
                 <article className="term" key={item['@id']}>
                   <h3>
@@ -68,8 +82,8 @@ const GlossaryView = ({ content }) => {
             </div>
           ))}
         </section>
-      </div>
-    </div>
+      </article>
+    </Container>
   );
 };
 

@@ -71,19 +71,19 @@ export const applyLineBreakSupport = (children) => {
   const klass = undefined;
 
   return typeof children === 'string'
-    ? children.split('\n').map((t, i) => {
+    ? children.split('\n').map((toot, i) => {
         return (
           <React.Fragment key={`${i}`}>
             {children.indexOf('\n') > -1 &&
             children.split('\n').length - 1 > i ? (
               <>
-                {klass ? <span className={klass}>{t}</span> : t}
+                {klass ? <span className={klass}>{toot}</span> : toot}
                 <br />
               </>
             ) : klass ? (
-              <span className={klass}>{t}</span>
+              <span className={klass}>{toot}</span>
             ) : (
-              t
+              toot
             )}
           </React.Fragment>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
