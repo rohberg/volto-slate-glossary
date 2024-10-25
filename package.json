@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "Add tooltips for glossary terms",
   "author": "Katja S\u00fcss",
-  "homepage": "https://github.com/ksuess/volto-slate-glossary",
+  "homepage": "https://github.com/rohberg/volto-slate-glossary",
   "license": "MIT",
   "keywords": [
     "volto-addon",

@@ -5,7 +5,7 @@ title_format = "## {version} ({project_date})"
 underlines = ["", "", ""]
 template = "./node_modules/@plone/scripts/templates/towncrier_template.jinja"
 start_string = "<!-- towncrier release notes start -->\n"
-issue_format = "[#{issue}](https://github.com/ksuess/volto-slate-glossary/issue/{issue})"
+issue_format = "[#{issue}](https://github.com/rohberg/volto-slate-glossary/issue/{issue})"
 
 [[tool.towncrier.type]]
 directory = "breaking"

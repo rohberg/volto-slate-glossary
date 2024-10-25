@@ -11,10 +11,10 @@
     "react"
   ],
   "author": "Katja Süss",
-  "homepage": "https://github.com/ksuess/volto-slate-glossary#readme",
+  "homepage": "https://github.com/rohberg/volto-slate-glossary#readme",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ksuess/volto-slate-glossary.git"
+    "url": "git@github.com:rohberg/volto-slate-glossary.git"
   },
   "publishConfig": {
     "access": "public"
