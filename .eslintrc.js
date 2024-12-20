@@ -1,6 +1,6 @@
 const fs = require('fs');
 const projectRootPath = __dirname;
-const { AddonRegistry } = require('@plone/registry/addon-registry');
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
 
 let coreLocation;
 if (fs.existsSync(`${projectRootPath}/core`))
@@ -8,7 +8,9 @@ if (fs.existsSync(`${projectRootPath}/core`))
 else if (fs.existsSync(`${projectRootPath}/../../core`))
   coreLocation = `${projectRootPath}/../../core`;
 
-const { registry } = AddonRegistry.init(`${coreLocation}/packages/volto`);
+const registry = new AddonConfigurationRegistry(
+  `${coreLocation}/packages/volto`,
+);
 
 // Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
 const addonAliases = Object.keys(registry.packages).map((o) => [
