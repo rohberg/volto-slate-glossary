@@ -51,7 +51,12 @@ const Tooltips = (props) => {
 
   useEffect(() => {
     if (glossaryterms) {
-      let texts = calculateTexts(blocks, blocks_layout, description, glossaryterms);
+      let texts = calculateTexts(
+        blocks,
+        blocks_layout,
+        description,
+        glossaryterms,
+      );
       // Store texts and pathname in atom
       setTooltippedTexts({ pathname: pathname, texts: texts });
     }
@@ -178,8 +183,8 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
               .join('');
             definition = `<ol>${arrayOfListNodes}</ol>`;
         }
-        const TooltipPopup = config.getComponent('TooltipPopup').component
-        return (<TooltipPopup term={el.val} definition={definition} idx={j} />)
+        const TooltipPopup = config.getComponent('TooltipPopup').component;
+        return <TooltipPopup term={el.val} definition={definition} idx={j} />;
       }
     }),
     matchOnlyFirstOccurence
@@ -209,11 +214,12 @@ const serializeNodes = (nodes) => {
 const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
   let remainingGlossaryterms = glossaryterms;
   let result = {};
-  
+
   function iterateOverBlocks(blocks, blocks_layout) {
     blocks_layout?.items &&
       blocks_layout.items.forEach((blockid) => {
-        if (blocks[blockid].value) { // Simple slate block
+        if (blocks[blockid].value) {
+          // Simple slate block
           const arrayOfStrings = _.flattenDeep(
             serializeNodes(blocks[blockid].value),
           );
@@ -232,7 +238,7 @@ const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
             result[key] = value;
             remainingGlossaryterms = newTerms;
           });
-        } else if (blocks[blockid]["@type"]==='description') {
+        } else if (blocks[blockid]['@type'] === 'description') {
           if (description) {
             const key = uuidv5(description, MY_NAMESPACE);
             if (Object.keys(result).includes(key)) {
@@ -259,7 +265,8 @@ const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
             result[key] = value;
             remainingGlossaryterms = newTerms;
           }
-        } else { // Nested blocks
+        } else {
+          // Nested blocks
           // block type 'gridBlock' or '"accordionPanel"
           if (blocks[blockid].blocks && blocks[blockid].blocks_layout) {
             iterateOverBlocks(
@@ -268,7 +275,11 @@ const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
             );
           }
           // block type 'accordion'
-          if (config.settings.glossary.includeAccordionBlock && blocks[blockid].data?.blocks && blocks[blockid].data?.blocks_layout) {
+          if (
+            config.settings.glossary.includeAccordionBlock &&
+            blocks[blockid].data?.blocks &&
+            blocks[blockid].data?.blocks_layout
+          ) {
             iterateOverBlocks(
               blocks[blockid].data.blocks,
               blocks[blockid].data.blocks_layout,
