@@ -73,9 +73,9 @@ Show tooltips also in text blocks of an [accordion block](https://github.com/eea
 config.settings.glossary.includeAccordionBlock = true;
 ```
 
-### Show tooltips also in a description block:
+### Show tooltips also in a description block
 
-Per default only text of slate blocks are equipped with tooltips.
+Per default only texts of slate blocks are equipped with tooltips.
 `TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
 
 Create a custom `DescriptionBlockView` in your project:
@@ -101,7 +101,7 @@ config.blocks.blocksConfig.description.view = DescriptionBlockViewWithTooltips;
 
 ### Show tooltips also in a teaser block
 
-Per default only text of slate blocks are equipped with tooltips.
+Per default only texts of slate blocks are equipped with tooltips.
 `TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
 
 Create a custom `TeaserView` in your project:
