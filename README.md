@@ -73,7 +73,7 @@ Show tooltips also in text blocks of an [accordion block](https://github.com/eea
 config.settings.glossary.includeAccordionBlock = true;
 ```
 
-### Show tooltips also in a description block
+### Show tooltips also in a description block
 
 Per default only texts of slate blocks are equipped with tooltips.
 `TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
