@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { useSetAtom } from 'jotai';
 import _ from 'lodash';
 import { Text } from 'slate';
 import { v5 as uuidv5 } from 'uuid';
-import { Popup } from 'semantic-ui-react';
 import { getUser } from '@plone/volto/actions';
 import { getTooltipTerms } from '../actions';
 import { MY_NAMESPACE } from '../utils';
 import { tooltippedTextsAtom } from '../utils';
 import config from '@plone/volto/registry';
 
+/**
+ * Add to config.settings.appExtras
+ */
 export const FetchTooltipTerms = ({ token }) => {
   const dispatch = useDispatch();
 
@@ -29,15 +31,13 @@ export const FetchTooltipTerms = ({ token }) => {
   return <div className="hidden-AppExtras-Fetch"></div>;
 };
 
+/**
+ * Add to config.settings.appExtras
+ * with restriction to the routes where tooltips are wanted.
+ */
 const Tooltips = (props) => {
-  return (
-    <>
-      <CalculateTexts {...props} />
-    </>
-  );
-};
-
-const CalculateTexts = ({ pathname }) => {
+  const pathname = props.pathname;
+  const description = props.content?.description;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
@@ -51,12 +51,9 @@ const CalculateTexts = ({ pathname }) => {
 
   useEffect(() => {
     if (glossaryterms) {
-      let texts = calculateTexts(blocks, blocks_layout, glossaryterms);
+      let texts = calculateTexts(blocks, blocks_layout, description, glossaryterms);
       // Store texts and pathname in atom
       setTooltippedTexts({ pathname: pathname, texts: texts });
-      // return () => {
-      //   setTooltippedTexts({ pathname: undefined, texts: [] });
-      // };
     }
   }, [blocks, blocks_layout, glossaryterms, pathname, setTooltippedTexts]);
 
@@ -99,8 +96,7 @@ export const applyLineBreakSupport = (children) => {
  */
 export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
   const caseSensitive = config.settings.glossary.caseSensitive;
-  const { matchOnlyFirstOccurence, mentionTermInTooltip } =
-    config.settings.glossary;
+  const { matchOnlyFirstOccurence } = config.settings.glossary;
   let result = [{ type: 'text', val: text }];
   let matchedGlossaryTerms = [];
   if (remainingGlossaryterms.length > 0) {
@@ -182,27 +178,8 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
               .join('');
             definition = `<ol>${arrayOfListNodes}</ol>`;
         }
-        return (
-          <Popup
-            wide
-            position="bottom left"
-            trigger={<span className="glossarytooltip">{el.val}</span>}
-            key={j}
-            className="tooltip"
-          >
-            {mentionTermInTooltip ? (
-              <Popup.Header>{el.val}</Popup.Header>
-            ) : null}
-            <Popup.Content>
-              <div
-                className="tooltip_content"
-                dangerouslySetInnerHTML={{
-                  __html: definition,
-                }}
-              />
-            </Popup.Content>
-          </Popup>
-        );
+        const TooltipPopup = config.getComponent('TooltipPopup').component
+        return (<TooltipPopup term={el.val} definition={definition} idx={j} />)
       }
     }),
     matchOnlyFirstOccurence
@@ -226,38 +203,75 @@ const serializeNodes = (nodes) => {
   return nodes.map(ConcatenatedString);
 };
 
-const calculateTexts = (blocks, blocks_layout, glossaryterms) => {
+/**
+ * calculate all markup of all slate blocks text, teaser blocks description and content description
+ */
+const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
   let remainingGlossaryterms = glossaryterms;
   let result = {};
-
+  
   function iterateOverBlocks(blocks, blocks_layout) {
     blocks_layout?.items &&
       blocks_layout.items.forEach((blockid) => {
-        if (blocks[blockid].value) {
-          let arrayOfStrings = _.flattenDeep(
+        if (blocks[blockid].value) { // Simple slate block
+          const arrayOfStrings = _.flattenDeep(
             serializeNodes(blocks[blockid].value),
           );
           arrayOfStrings.forEach((str) => {
             if (str.length === 0) {
               return;
             }
-            let key = uuidv5(str, MY_NAMESPACE);
+            const key = uuidv5(str, MY_NAMESPACE);
             if (Object.keys(result).includes(key)) {
               return;
             }
-            let [value, newTerms] = enhanceTextWithTooltips(
+            const [value, newTerms] = enhanceTextWithTooltips(
               str,
               remainingGlossaryterms,
             );
             result[key] = value;
             remainingGlossaryterms = newTerms;
           });
-        } else {
-          // Handle nested blocks
+        } else if (blocks[blockid]["@type"]==='description') {
+          if (description) {
+            const key = uuidv5(description, MY_NAMESPACE);
+            if (Object.keys(result).includes(key)) {
+              return;
+            }
+            const [value, newTerms] = enhanceTextWithTooltips(
+              description,
+              remainingGlossaryterms,
+            );
+            result[key] = value;
+            remainingGlossaryterms = newTerms;
+          }
+        } else if (blocks[blockid].description) {
+          const teaser_description = blocks[blockid].description;
+          if (teaser_description) {
+            const key = uuidv5(teaser_description, MY_NAMESPACE);
+            if (Object.keys(result).includes(key)) {
+              return;
+            }
+            const [value, newTerms] = enhanceTextWithTooltips(
+              teaser_description,
+              remainingGlossaryterms,
+            );
+            result[key] = value;
+            remainingGlossaryterms = newTerms;
+          }
+        } else { // Nested blocks
+          // block type 'gridBlock' or '"accordionPanel"
           if (blocks[blockid].blocks && blocks[blockid].blocks_layout) {
             iterateOverBlocks(
               blocks[blockid].blocks,
               blocks[blockid].blocks_layout,
+            );
+          }
+          // block type 'accordion'
+          if (config.settings.glossary.includeAccordionBlock && blocks[blockid].data?.blocks && blocks[blockid].data?.blocks_layout) {
+            iterateOverBlocks(
+              blocks[blockid].data.blocks,
+              blocks[blockid].data.blocks_layout,
             );
           }
         }

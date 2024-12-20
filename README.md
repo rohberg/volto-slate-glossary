@@ -53,9 +53,6 @@ config.settings.glossary.matchOnlyFirstOccurence = true;
 ```
 
 
-User can opt-out by setting glossarytooltips to false.
-Add a boolean member field *glossarytooltips* for it.
-
 ## Further configurations
 
 Hide alphabet navigation of glossary view:
@@ -69,3 +66,92 @@ Show glossary term in tooltips header:
 ```js
 config.settings.glossary.mentionTermInTooltip = true;
 ```
+
+Show tooltips also in text blocks of an [accordion block](https://github.com/eea/volto-accordion-block):
+
+```js
+config.settings.glossary.includeAccordionBlock = true;
+```
+
+### Show tooltips also in a description block:
+
+Per default only text of slate blocks are equipped with tooltips.
+`TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
+
+Create a custom `DescriptionBlockView` in your project:
+
+```js
+import { TextWithGlossaryTooltips } from '@rohberg/volto-slate-glossary/utils';
+
+const DescriptionBlockView = ({ properties, metadata, id }) => {
+  let description = (metadata || properties)['description'] || '';
+  description = TextWithGlossaryTooltips({ text: description });
+
+  return <p className="documentDescription">{description}</p>;
+};
+
+export default DescriptionBlockView;
+````
+
+Register `DescriptionBlockView`:
+
+```js
+config.blocks.blocksConfig.description.view = DescriptionBlockViewWithTooltips;
+```
+
+### Show tooltips also in a teaser block
+
+Per default only text of slate blocks are equipped with tooltips.
+`TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
+
+Create a custom `TeaserView` in your project:
+
+```js
+import TeaserBody from '@plone/volto/components/manage/Blocks/Teaser/Body';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
+import { TextWithGlossaryTooltips } from '@rohberg/volto-slate-glossary/utils';
+
+const TeaserView = (props) => {
+  return (
+    <TeaserBody
+      {...{
+        ...props,
+        data: {
+          ...props.data,
+          description: TextWithGlossaryTooltips({
+            text: props.data.description,
+          }),
+        },
+      }}
+    />
+  );
+};
+
+export default withBlockExtensions(TeaserView);
+```
+
+Register `TeaserView`:
+
+```js
+  // teaser block with tooltips 
+  config.blocks.blocksConfig.teaser.view = TeaserViewWithTooltips;
+  // teaser block in grid block also with tooltips 
+  config.blocks.blocksConfig.gridBlock.blocksConfig.teaser.view =
+    TeaserViewWithTooltips;
+```
+
+### Register Custom tooltip component
+
+The tooltip component can be replaced by a custom one.
+
+```js
+  config.registerComponent({
+    name: 'TooltipPopup',
+    component: CustomTooltipPopup,
+  });
+  ````
+
+## Opt-out for users
+
+A user can opt-out by setting glossarytooltips to false.
+Add a boolean member field `glossarytooltips` to provide this.
