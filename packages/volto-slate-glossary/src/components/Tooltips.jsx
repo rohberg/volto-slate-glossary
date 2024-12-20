@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
@@ -60,7 +61,14 @@ const Tooltips = (props) => {
       // Store texts and pathname in atom
       setTooltippedTexts({ pathname: pathname, texts: texts });
     }
-  }, [blocks, blocks_layout, glossaryterms, pathname, setTooltippedTexts]);
+  }, [
+    blocks,
+    blocks_layout,
+    description,
+    glossaryterms,
+    pathname,
+    setTooltippedTexts,
+  ]);
 
   return <div className="hidden-AppExtras-CalculateTexts"></div>;
 };
@@ -184,7 +192,9 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
             definition = `<ol>${arrayOfListNodes}</ol>`;
         }
         const TooltipPopup = config.getComponent('TooltipPopup').component;
-        return <TooltipPopup term={el.val} definition={definition} idx={j} />;
+        return (
+          <TooltipPopup term={el.val} definition={definition} idx={j} key={j} />
+        );
       }
     }),
     matchOnlyFirstOccurence

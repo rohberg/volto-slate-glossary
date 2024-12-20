@@ -3,7 +3,6 @@ import TermView from './components/TermView';
 import { glossarytermsReducer, glossarytooltiptermsReducer } from './reducers';
 import { TextWithGlossaryTooltips } from './utils';
 import { FetchTooltipTerms } from './components/Tooltips';
-import DescriptionBlockView from './components/DescriptionBlockView';
 import TooltipPopup from './components/TooltipPopup';
 
 const applyConfig = (config) => {
