@@ -35,6 +35,7 @@
   "dependencies": {
     "@plone/volto": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@eeacms/volto-accordion-block": "*",
     "@rohberg/volto-slate-glossary": "workspace:*",
     "policy": "workspace:*"
   },
