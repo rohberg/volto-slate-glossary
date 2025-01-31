@@ -1,6 +1,6 @@
 import { Tooltips } from '@rohberg/volto-slate-glossary/components';
-// import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
-// import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
+import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
+import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
 
 const applyConfig = (config) => {
   /**
@@ -13,10 +13,12 @@ const applyConfig = (config) => {
   // config.settings.glossary.includeAccordionBlock = true;
 
   // // description block with tooltips
+  // Uncomment the following lines to enable tooltips in the description block
   // config.blocks.blocksConfig.description.view =
   //   DescriptionBlockViewWithTooltips;
 
   // // teaser block with tooltips (teaser and teaser in grid block)
+  // Uncomment the following lines to enable tooltips in the teaser block
   // config.blocks.blocksConfig.teaser.view = TeaserViewWithTooltips;
   // config.blocks.blocksConfig.gridBlock.blocksConfig.teaser.view =
   //   TeaserViewWithTooltips;
