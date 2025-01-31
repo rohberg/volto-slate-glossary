@@ -1,6 +1,6 @@
 import { Tooltips } from '@rohberg/volto-slate-glossary/components';
-import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
-import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
+// import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
+// import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
 
 const applyConfig = (config) => {
   /**

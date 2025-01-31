@@ -337,7 +337,7 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
 </div>
 `;
 
-exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1`] = `
+exports[`Tooltips in general  – NO tooltips if route doesn't match configuration 1`] = `
 <div>
   <div
     id="view"
@@ -413,7 +413,7 @@ exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1
 </div>
 `;
 
-exports[`Tooltips divers  – component Tooltips is rendered in AppExtras 1`] = `
+exports[`Tooltips in general  – component Tooltips is rendered in AppExtras 1`] = `
 <div>
   <div
     class="hidden-AppExtras-CalculateTexts"
