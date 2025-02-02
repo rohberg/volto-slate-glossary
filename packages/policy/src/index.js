@@ -2,6 +2,7 @@ import { Tooltips } from '@rohberg/volto-slate-glossary/components';
 import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
 import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
 import TitleBlockViewWithTooltips from './components/TitleBlockViewWithTooltips';
+import AccordionBlockViewWithTooltips from './components/AccordionBlockViewWithTooltips';
 
 const applyConfig = (config) => {
   /**
@@ -12,6 +13,9 @@ const applyConfig = (config) => {
   config.settings.glossary.mentionTermInTooltip = true;
   // Further configuration
   config.settings.glossary.includeAccordionBlock = true;
+  if (config.blocks.blocksConfig.accordion) {
+    config.blocks.blocksConfig.accordion.view = AccordionBlockViewWithTooltips;
+  }
 
   // description block with tooltips
   // Uncomment the following lines and import the custom DescriptionBlockView component to enable tooltips in the description block
