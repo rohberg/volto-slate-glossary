@@ -12,6 +12,7 @@ const TeaserView = (props) => {
           description: TextWithGlossaryTooltips({
             text: props.data.description,
           }),
+          title: TextWithGlossaryTooltips({ text: props.data.title }),
         },
       }}
     />
