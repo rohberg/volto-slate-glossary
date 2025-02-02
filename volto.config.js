@@ -1,4 +1,8 @@
-const addons = ['@rohberg/volto-slate-glossary', 'policy', '@eeacms/volto-accordion-block'];
+const addons = [
+  '@eeacms/volto-accordion-block',
+  '@rohberg/volto-slate-glossary',
+  'policy',
+];
 const theme = '';
 
 module.exports = {
