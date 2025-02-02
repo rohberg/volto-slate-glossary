@@ -190,6 +190,7 @@ const initialStore = {
   content: {
     data: {
       '@type': 'Document',
+      title: 'Python tutorial',
       blocks: {
         '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c': {
           '@type': 'slate',
@@ -237,12 +238,12 @@ const initialStore = {
         '00000001-68af-4935-860b-9f17375368d8': {
           '@type': 'slate',
           plaintext:
-            'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 μg NO2/m3',
+            'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 µg NO2/m3',
           value: [
             {
               children: [
                 {
-                  text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 μg NO2/m3</strong>',
+                  text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 µg NO2/m3</strong>',
                 },
               ],
               type: 'p',
@@ -372,7 +373,10 @@ describe('Tooltips in general', () => {
     const { container } = render(
       <Provider store={store}>
         <ErrorBoundary>
-          <AppExtras pathname="/test"></AppExtras>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
         </ErrorBoundary>
       </Provider>,
     );
@@ -390,7 +394,10 @@ describe('Tooltips', () => {
         <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
         </ErrorBoundary>
       </Provider>,
     );
@@ -408,7 +415,10 @@ describe('Tooltips', () => {
         <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
         </ErrorBoundary>
       </Provider>,
     );
@@ -420,13 +430,17 @@ describe('Tooltips', () => {
 
   test('are generated only case sensitive', async () => {
     const store = mockStore(baseStore);
+    config.settings.glossary.matchOnlyFirstOccurence = false;
     config.settings.glossary.caseSensitive = true;
     const { container } = render(
       <Provider store={store}>
         <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
         </ErrorBoundary>
       </Provider>,
     );

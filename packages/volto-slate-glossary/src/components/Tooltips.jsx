@@ -273,7 +273,7 @@ const calculateTexts = (content, glossaryterms) => {
   }
   iterateOverBlocks(blocks, blocks_layout);
 
-  [content.title, content.description].forEach((el) => {
+  [content?.title, content?.description].forEach((el) => {
     if (el) {
       const key = uuidv5(el, MY_NAMESPACE);
       if (Object.keys(result).includes(key)) {
