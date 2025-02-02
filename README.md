@@ -46,14 +46,11 @@ Regardless of this setting, when you have a fully uppercase term, for example `R
 
 By default we show tooltips for all occurrences of a term.
 
-Since version 2.0.0 you can configure to only show tooltips for the first occurence on a page.
+You can configure to only show tooltips for the first occurence on a page.
 
 ```js
 config.settings.glossary.matchOnlyFirstOccurence = true;
 ```
-
-
-## Further configurations
 
 Hide alphabet navigation of glossary view:
 
@@ -73,38 +70,13 @@ Show tooltips also in text blocks of an [accordion block](https://github.com/eea
 config.settings.glossary.includeAccordionBlock = true;
 ```
 
-### Show tooltips also in a description block
-
-Per default only texts of slate blocks are equipped with tooltips.
-`TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
-
-Create a custom `DescriptionBlockView` in your project:
-
-```js
-import { TextWithGlossaryTooltips } from '@rohberg/volto-slate-glossary/utils';
-
-const DescriptionBlockView = ({ properties, metadata, id }) => {
-  let description = (metadata || properties)['description'] || '';
-  description = TextWithGlossaryTooltips({ text: description });
-
-  return <p className="documentDescription">{description}</p>;
-};
-
-export default DescriptionBlockView;
-````
-
-Register `DescriptionBlockView`:
-
-```js
-config.blocks.blocksConfig.description.view = DescriptionBlockViewWithTooltips;
-```
 
 ### Show tooltips also in a teaser block
 
 Per default only texts of slate blocks are equipped with tooltips.
 `TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
 
-Create a custom `TeaserView` in your project:
+Create a custom `TeaserView` component in your project:
 
 ```js
 import TeaserBody from '@plone/volto/components/manage/Blocks/Teaser/Body';
@@ -130,15 +102,57 @@ const TeaserView = (props) => {
 export default withBlockExtensions(TeaserView);
 ```
 
-Register `TeaserView`:
+Register your `TeaserView` component:
 
 ```js
+import TeaserViewWithTooltips from './components/TeaserViewWithTooltips'; // import by speaking name
+
+const applyConfig = (config) => {
+  // your project configuration…
+
   // teaser block with tooltips 
   config.blocks.blocksConfig.teaser.view = TeaserViewWithTooltips;
   // teaser block in grid block also with tooltips 
   config.blocks.blocksConfig.gridBlock.blocksConfig.teaser.view =
     TeaserViewWithTooltips;
+
+  return config;
+};
+
+export default applyConfig;
 ```
+
+You can find the code also via `packages/policy/src/index.js`.
+
+
+### Show tooltips also in a description block
+
+Per default only texts of slate blocks are equipped with tooltips.
+`TextWithGlossaryTooltips` can be used to enhance other texts with tooltip markup.
+
+Create a custom `DescriptionBlockView` in your project:
+
+```js
+import { TextWithGlossaryTooltips } from '@rohberg/volto-slate-glossary/utils';
+
+const DescriptionBlockView = ({ properties, metadata, id }) => {
+  let description = (metadata || properties)['description'] || '';
+  description = TextWithGlossaryTooltips({ text: description });
+
+  return <p className="documentDescription">{description}</p>;
+};
+
+export default DescriptionBlockView;
+````
+
+Register your `DescriptionBlockView` component:
+
+```js
+config.blocks.blocksConfig.description.view = DescriptionBlockViewWithTooltips; // import by speaking name
+```
+
+You can find the code also via `packages/policy/src/index.js`.
+
 
 ### Register Custom tooltip component
 
@@ -150,6 +164,7 @@ The tooltip component can be replaced by a custom one.
     component: CustomTooltipPopup,
   });
   ````
+
 
 ## Opt-out for users
 
