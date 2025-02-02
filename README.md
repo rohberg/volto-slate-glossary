@@ -165,6 +165,25 @@ The tooltip component can be replaced by a custom one.
   });
   ````
 
+## Demo
+
+To see the add-on in action, set up backend and frontend of this package.
+
+backend:
+
+```shell
+make backend-install
+make backend-create-site
+make backend-start
+```
+
+frontend:
+
+```shell
+make install
+make start
+```
+
 
 ## Opt-out for users
 
