@@ -1,6 +1,7 @@
 import { Tooltips } from '@rohberg/volto-slate-glossary/components';
 // import DescriptionBlockViewWithTooltips from './components/DescriptionBlockViewWithTooltips';
 // import TeaserViewWithTooltips from './components/TeaserViewWithTooltips';
+// import TitleBlockViewWithTooltips from './components/TitleBlockViewWithTooltips';
 
 const applyConfig = (config) => {
   /**
@@ -22,6 +23,10 @@ const applyConfig = (config) => {
   // config.blocks.blocksConfig.teaser.view = TeaserViewWithTooltips;
   // config.blocks.blocksConfig.gridBlock.blocksConfig.teaser.view =
   //   TeaserViewWithTooltips;
+
+  // title block with tooltips
+  // Uncomment the following lines and import the custom TitleBlockView component to enable tooltips in the title block
+  // config.blocks.blocksConfig.title.view = TitleBlockViewWithTooltips;
 
   // Tooltips everywhere
   config.settings.appExtras = [
