@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { useSetAtom } from 'jotai';
-import _ from 'lodash';
+import flatten from 'lodash/flatten';
+import flattenDeep from 'lodash/flattenDeep';
 import { Text } from 'slate';
 import { v5 as uuidv5 } from 'uuid';
-import { getUser } from '@plone/volto/actions';
+import { getUser } from '@plone/volto/actions/users/users';
 import { getTooltipTerms } from '../actions';
 import { MY_NAMESPACE } from '../utils';
 import { tooltippedTextsAtom } from '../utils';
@@ -38,37 +39,20 @@ export const FetchTooltipTerms = ({ token }) => {
  */
 const Tooltips = (props) => {
   const pathname = props.pathname;
-  const description = props.content?.description;
   const glossaryterms = useSelector(
     (state) => state.glossarytooltipterms?.result?.items,
   );
-  const blocks_layout = useSelector(
-    (state) => state.content?.data?.blocks_layout,
-  );
-  const blocks = useSelector((state) => state.content?.data?.blocks);
 
   // We can't use atom Family as pathname is not known here.
   const setTooltippedTexts = useSetAtom(tooltippedTextsAtom);
 
   useEffect(() => {
     if (glossaryterms) {
-      let texts = calculateTexts(
-        blocks,
-        blocks_layout,
-        description,
-        glossaryterms,
-      );
+      let texts = calculateTexts(props.content, glossaryterms);
       // Store texts and pathname in atom
       setTooltippedTexts({ pathname: pathname, texts: texts });
     }
-  }, [
-    blocks,
-    blocks_layout,
-    description,
-    glossaryterms,
-    pathname,
-    setTooltippedTexts,
-  ]);
+  }, [glossaryterms, pathname, props.content, setTooltippedTexts]);
 
   return <div className="hidden-AppExtras-CalculateTexts"></div>;
 };
@@ -163,11 +147,11 @@ export const enhanceTextWithTooltips = (text, remainingGlossaryterms) => {
         }
         return chunk;
       });
-      result = _.flatten(result);
+      result = flatten(result);
     });
   }
   // Array of { type: 'text', val: text }, { type: 'glossarytermtooltip', val: text }
-  result = _.flatten(result);
+  result = flatten(result);
 
   return [
     result.map((el, j) => {
@@ -221,16 +205,32 @@ const serializeNodes = (nodes) => {
 /**
  * calculate all markup of all slate blocks text, teaser blocks description and content description
  */
-const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
+const calculateTexts = (content, glossaryterms) => {
   let remainingGlossaryterms = glossaryterms;
   let result = {};
+  const blocks = content?.blocks;
+  const blocks_layout = content?.blocks_layout;
 
   function iterateOverBlocks(blocks, blocks_layout) {
     blocks_layout?.items &&
       blocks_layout.items.forEach((blockid) => {
+        [blocks[blockid].title, blocks[blockid].description].forEach((el) => {
+          if (el) {
+            const key = uuidv5(el, MY_NAMESPACE);
+            if (Object.keys(result).includes(key)) {
+              return;
+            }
+            const [value, newTerms] = enhanceTextWithTooltips(
+              el,
+              remainingGlossaryterms,
+            );
+            result[key] = value;
+            remainingGlossaryterms = newTerms;
+          }
+        });
         if (blocks[blockid].value) {
           // Simple slate block
-          const arrayOfStrings = _.flattenDeep(
+          const arrayOfStrings = flattenDeep(
             serializeNodes(blocks[blockid].value),
           );
           arrayOfStrings.forEach((str) => {
@@ -248,33 +248,6 @@ const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
             result[key] = value;
             remainingGlossaryterms = newTerms;
           });
-        } else if (blocks[blockid]['@type'] === 'description') {
-          if (description) {
-            const key = uuidv5(description, MY_NAMESPACE);
-            if (Object.keys(result).includes(key)) {
-              return;
-            }
-            const [value, newTerms] = enhanceTextWithTooltips(
-              description,
-              remainingGlossaryterms,
-            );
-            result[key] = value;
-            remainingGlossaryterms = newTerms;
-          }
-        } else if (blocks[blockid].description) {
-          const teaser_description = blocks[blockid].description;
-          if (teaser_description) {
-            const key = uuidv5(teaser_description, MY_NAMESPACE);
-            if (Object.keys(result).includes(key)) {
-              return;
-            }
-            const [value, newTerms] = enhanceTextWithTooltips(
-              teaser_description,
-              remainingGlossaryterms,
-            );
-            result[key] = value;
-            remainingGlossaryterms = newTerms;
-          }
         } else {
           // Nested blocks
           // block type 'gridBlock' or '"accordionPanel"
@@ -299,6 +272,22 @@ const calculateTexts = (blocks, blocks_layout, description, glossaryterms) => {
       });
   }
   iterateOverBlocks(blocks, blocks_layout);
+
+  [content.title, content.description].forEach((el) => {
+    if (el) {
+      const key = uuidv5(el, MY_NAMESPACE);
+      if (Object.keys(result).includes(key)) {
+        return;
+      }
+      const [value, newTerms] = enhanceTextWithTooltips(
+        el,
+        remainingGlossaryterms,
+      );
+      result[key] = value;
+      remainingGlossaryterms = newTerms;
+    }
+  });
+
   return result;
 };
 
