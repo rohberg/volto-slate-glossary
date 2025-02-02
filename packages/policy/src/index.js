@@ -12,13 +12,13 @@ const applyConfig = (config) => {
   // Further configuration
   // config.settings.glossary.includeAccordionBlock = true;
 
-  // // description block with tooltips
-  // Uncomment the following lines and import the DescriptionBlockViewWithTooltips component to enable tooltips in the description block
+  // description block with tooltips
+  // Uncomment the following lines and import the custom DescriptionBlockView component to enable tooltips in the description block
   // config.blocks.blocksConfig.description.view =
   //   DescriptionBlockViewWithTooltips;
 
-  // // teaser block with tooltips (teaser and teaser in grid block)
-  // Uncomment the following lines and import the TeaserViewWithTooltips component to enable tooltips in the teaser block
+  // teaser block with tooltips (teaser and teaser in grid block)
+  // Uncomment the following lines and import the custom TeaserView component to enable tooltips in the teaser block
   // config.blocks.blocksConfig.teaser.view = TeaserViewWithTooltips;
   // config.blocks.blocksConfig.gridBlock.blocksConfig.teaser.view =
   //   TeaserViewWithTooltips;
