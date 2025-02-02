@@ -1,13 +1,13 @@
 {
-  "@id": "/images",
+  "@id": "/news",
   "@type": "Document",
-  "UID": "a720393b3c0240e5bd27c43fcd2cfd1e",
-  "allow_discussion": false,
+  "UID": "e0fb9ee5c5cc42d386a21561a057031f",
+  "allow_discussion": null,
   "blocks": {
-    "30f271c5-dadf-4f47-987f-6ce417922c6b": {
+    "a6c220c0-95fc-460b-ab28-5d8a8ee182ae": {
       "@type": "title"
     },
-    "ecfe183b-1d44-48f9-8eac-5de33884c7f5": {
+    "e9807c38-317f-43ea-b97e-072624cbcffa": {
       "@type": "listing",
       "headlineTag": "h2",
       "querystring": {
@@ -16,40 +16,37 @@
             "i": "portal_type",
             "o": "plone.app.querystring.operation.selection.any",
             "v": [
-              "Image"
+              "News Item"
             ]
-          },
-          {
-            "i": "path",
-            "o": "plone.app.querystring.operation.string.absolutePath",
-            "v": "/images"
           }
         ],
-        "sort_on": "getObjPositionInParent",
-        "sort_order": "ascending",
-        "sort_order_boolean": false
+        "sort_order": "ascending"
       },
-      "variation": "imageGallery"
+      "variation": "default"
+    },
+    "ff4050ab-a7d5-43a7-b34f-d74677226369": {
+      "@type": "slate"
     }
   },
   "blocks_layout": {
     "items": [
-      "30f271c5-dadf-4f47-987f-6ce417922c6b",
-      "ecfe183b-1d44-48f9-8eac-5de33884c7f5"
+      "a6c220c0-95fc-460b-ab28-5d8a8ee182ae",
+      "e9807c38-317f-43ea-b97e-072624cbcffa",
+      "ff4050ab-a7d5-43a7-b34f-d74677226369"
     ]
   },
   "contributors": [],
-  "created": "2024-05-27T03:23:26+00:00",
+  "created": "2025-02-02T14:27:48+00:00",
   "creators": [
     "admin"
   ],
-  "description": "Site images",
-  "effective": null,
-  "exclude_from_nav": true,
+  "description": "",
+  "effective": "2025-02-02T15:34:42",
+  "exclude_from_nav": false,
   "expires": null,
   "exportimport.constrains": {},
   "exportimport.conversation": [],
-  "id": "images",
+  "id": "news",
   "is_folderish": true,
   "language": "##DEFAULT##",
   "layout": "document_view",
@@ -57,13 +54,13 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2024-05-27T03:26:27+00:00",
+  "modified": "2025-02-02T15:34:15+00:00",
   "preview_caption": null,
   "preview_image": null,
   "review_state": "published",
   "rights": "",
   "subjects": [],
-  "title": "Images",
+  "title": "News",
   "type_title": "Page",
   "version": "current",
   "workflow_history": {
@@ -73,14 +70,14 @@
         "actor": "admin",
         "comments": "",
         "review_state": "private",
-        "time": "2024-05-27T03:23:26+00:00"
+        "time": "2025-02-02T14:27:48+00:00"
       },
       {
         "action": "publish",
         "actor": "admin",
         "comments": "",
         "review_state": "published",
-        "time": "2024-05-27T03:50:30+00:00"
+        "time": "2025-02-02T14:34:42+00:00"
       }
     ]
   },

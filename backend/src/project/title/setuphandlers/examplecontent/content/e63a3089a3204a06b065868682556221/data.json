@@ -1,0 +1,86 @@
+{
+  "@id": "/news/trace-element",
+  "@type": "Document",
+  "UID": "e63a3089a3204a06b065868682556221",
+  "allow_discussion": null,
+  "blocks": {
+    "246b8830-5b16-4f9a-be74-2498ec6e65e1": {
+      "@type": "title"
+    },
+    "41ecf3e1-3a5b-4950-9748-329ef3489683": {
+      "@type": "slate",
+      "plaintext": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:"
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "246b8830-5b16-4f9a-be74-2498ec6e65e1",
+      "41ecf3e1-3a5b-4950-9748-329ef3489683"
+    ]
+  },
+  "contributors": [],
+  "created": "2025-02-02T14:33:42+00:00",
+  "creators": [
+    "admin"
+  ],
+  "description": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:",
+  "effective": "2025-02-02T15:34:33",
+  "exclude_from_nav": false,
+  "expires": null,
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "trace-element",
+  "is_folderish": true,
+  "language": "##DEFAULT##",
+  "layout": "document_view",
+  "lock": {
+    "locked": false,
+    "stealable": true
+  },
+  "modified": "2025-02-02T15:34:15+00:00",
+  "preview_caption": null,
+  "preview_image": {
+    "blob_path": "e63a3089a3204a06b065868682556221/preview_image/Herbstlaub.JPG",
+    "content-type": "image/jpeg",
+    "filename": "Herbstlaub.JPG",
+    "height": 2829,
+    "size": 1839047,
+    "width": 2829
+  },
+  "review_state": "published",
+  "rights": "",
+  "subjects": [],
+  "title": "Trace element",
+  "type_title": "Page",
+  "version": "current",
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2025-02-02T14:33:42+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2025-02-02T14:34:33+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}

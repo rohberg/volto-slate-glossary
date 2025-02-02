@@ -1,0 +1,168 @@
+{
+  "@id": "/news/water",
+  "@type": "News Item",
+  "UID": "ce4a77a35b204458aef031e00bf7214a",
+  "allow_discussion": null,
+  "blocks": {
+    "07f5c23a-1568-416c-8ce4-1a31e0fd0962": {
+      "@type": "slate",
+      "plaintext": "The frequencies of chemical elements differ considerably when considering their occurrence in the solar system, on the planet Earth, in rocks in the earth's crust, in the water of oceans or, for example, in the human body. Within the respective frequency distribution, the common elements are separated as bulk elements from the rare trace elements.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "The frequencies of chemical elements differ considerably when considering their occurrence in the solar system, on the planet Earth, in rocks in the earth's crust, in the water of oceans or, for example, in the human body. Within the respective frequency distribution, the common elements are separated as bulk elements from the rare trace elements."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "2331aab3-3a66-4a9a-a8d9-6cee03ef7798": {
+      "@type": "title"
+    },
+    "68bd7128-3b80-43fc-abbb-a2d6a8ef0cd9": {
+      "@type": "description"
+    },
+    "c09cdc17-3d29-4444-9c90-9a9c91e96826": {
+      "@type": "gridBlock",
+      "blocks": {
+        "a3c05ff5-536e-400d-9de1-4eabdfa037b8": {
+          "@type": "slate",
+          "plaintext": "Its chemical formula, H2O, indicates that each of its molecules contains one oxygen and two hydrogen atoms, connected by covalent bonds. The hydrogen atoms are attached to the oxygen atom at an angle of 104.45\u00b0. In liquid form, H2O is also called \"water\" at standard temperature and pressure.",
+          "value": [
+            {
+              "children": [
+                {
+                  "text": "Its chemical formula, H2O, indicates that each of its molecules contains one oxygen and two hydrogen atoms, connected by covalent bonds. The hydrogen atoms are attached to the oxygen atom at an angle of 104.45\u00b0. In liquid form, H2O is also called \"water\" at standard temperature and pressure."
+                }
+              ],
+              "type": "p"
+            }
+          ]
+        },
+        "d949228b-de74-4f3e-ae78-3df78c720084": {
+          "@type": "teaser",
+          "description": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:",
+          "head_title": null,
+          "href": [
+            {
+              "@id": "../../resolveuid/e63a3089a3204a06b065868682556221",
+              "@type": "Document",
+              "Description": "Morgen \u00fcben wir weiter.",
+              "Subject": [],
+              "Title": "Ausbildungsmodul Farben",
+              "description": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:",
+              "effective": "2025-02-02T14:34:33+00:00",
+              "hasPreviewImage": true,
+              "head_title": null,
+              "image_field": "preview_image",
+              "review_state": "published",
+              "title": "Trace element",
+              "type_title": "Page"
+            }
+          ],
+          "overwrite": false,
+          "styles": {
+            "align": "left"
+          },
+          "title": "Trace element"
+        }
+      },
+      "blocks_layout": {
+        "items": [
+          "a3c05ff5-536e-400d-9de1-4eabdfa037b8",
+          "d949228b-de74-4f3e-ae78-3df78c720084"
+        ]
+      }
+    },
+    "c2d2be32-4206-4ba5-a9c7-931e300693aa": {
+      "@type": "slate",
+      "plaintext": "A trace element (also microelement) is generally a chemical element that only occurs in low concentrations or traces; extremely low concentrations are also referred to as ultra-trace elements.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "A trace element (also microelement) is generally a chemical element that only occurs in low concentrations or traces; extremely low concentrations are also referred to as ultra-trace elements."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "d864eff9-f268-443d-ae4d-c62bf19e501e": {
+      "@type": "slate",
+      "plaintext": "It is a transparent, tasteless, odorless, and nearly colorless chemical substance. It is the main constituent of Earth's hydrosphere and the fluids of all known living organisms (in which it acts as a solvent). It is vital for all known forms of life, despite not providing food energy or organic micronutrients.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "It is a transparent, tasteless, odorless, and nearly colorless chemical substance. It is the main constituent of Earth's hydrosphere and the fluids of all known living organisms (in which it acts as a solvent). It is vital for all known forms of life, despite not providing food energy or organic micronutrients. "
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "2331aab3-3a66-4a9a-a8d9-6cee03ef7798",
+      "68bd7128-3b80-43fc-abbb-a2d6a8ef0cd9",
+      "d864eff9-f268-443d-ae4d-c62bf19e501e",
+      "c09cdc17-3d29-4444-9c90-9a9c91e96826",
+      "c2d2be32-4206-4ba5-a9c7-931e300693aa",
+      "07f5c23a-1568-416c-8ce4-1a31e0fd0962"
+    ]
+  },
+  "changeNote": "",
+  "contributors": [],
+  "created": "2025-02-02T14:32:01+00:00",
+  "creators": [
+    "admin"
+  ],
+  "description": "Water is an inorganic compound with the chemical formula H2O",
+  "effective": "2025-02-02T15:34:34",
+  "exclude_from_nav": false,
+  "expires": null,
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "water",
+  "image": null,
+  "image_caption": null,
+  "is_folderish": true,
+  "language": "##DEFAULT##",
+  "layout": "newsitem_view",
+  "lock": {
+    "locked": false,
+    "stealable": true
+  },
+  "modified": "2025-02-02T15:34:15+00:00",
+  "review_state": "published",
+  "rights": "",
+  "subjects": [],
+  "title": "Water",
+  "type_title": "News Item",
+  "version": "current",
+  "versioning_enabled": true,
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2025-02-02T14:32:01+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2025-02-02T14:34:34+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}

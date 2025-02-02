@@ -1,0 +1,40 @@
+{
+  "@id": "/glossary/inorganic",
+  "@type": "Term",
+  "UID": "c8956696acce49bda17e619cee819f85",
+  "allow_discussion": null,
+  "created": "2025-02-02T15:32:00+00:00",
+  "definition": {
+    "content-type": "text/html",
+    "data": "<p><span class=\"\">An inorganic compound is typically a chemical compound that </span><strong><span class=\"\">lacks carbon\u2013hydrogen bonds</span></strong><span class=\"\">\u2060\u2014that is, a compound that is not an organic compound. The study of inorganic compounds is a subfield of chemistry known as inorganic chemistry. </span></p>",
+    "encoding": "utf8"
+  },
+  "description": "",
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "inorganic",
+  "image": null,
+  "is_folderish": false,
+  "language": "##DEFAULT##",
+  "layout": "view",
+  "lock": {},
+  "modified": "2025-02-02T15:32:00+00:00",
+  "review_state": "private",
+  "title": "inorganic",
+  "type_title": "Term",
+  "variants": [],
+  "version": "current",
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2025-02-02T15:32:00+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}

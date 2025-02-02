@@ -1,14 +1,100 @@
 {
   "__version__": "1.0.0",
   "_blob_files_": [
+    "e63a3089a3204a06b065868682556221/preview_image/Herbstlaub.JPG",
     "a58ccead718140c1baa98d43595fc3e6/image/plone-foundation.png"
   ],
   "_data_files_": [
     "plone_site_root/data.json",
+    "bc4f1b91ac2b4ed9b932db57450c369e/data.json",
+    "c8956696acce49bda17e619cee819f85/data.json",
+    "adf0cd89dd184a80814d0c79a9baaefe/data.json",
+    "ee0139b8ca70498f969894f799b61959/data.json",
     "a720393b3c0240e5bd27c43fcd2cfd1e/data.json",
-    "a58ccead718140c1baa98d43595fc3e6/data.json"
+    "a58ccead718140c1baa98d43595fc3e6/data.json",
+    "e0fb9ee5c5cc42d386a21561a057031f/data.json",
+    "e63a3089a3204a06b065868682556221/data.json",
+    "ce4a77a35b204458aef031e00bf7214a/data.json"
   ],
   "default_page": {},
+  "local_permissions": {
+    "a58ccead718140c1baa98d43595fc3e6": {},
+    "a720393b3c0240e5bd27c43fcd2cfd1e": {},
+    "adf0cd89dd184a80814d0c79a9baaefe": {},
+    "bc4f1b91ac2b4ed9b932db57450c369e": {},
+    "c8956696acce49bda17e619cee819f85": {},
+    "ce4a77a35b204458aef031e00bf7214a": {},
+    "e0fb9ee5c5cc42d386a21561a057031f": {},
+    "e63a3089a3204a06b065868682556221": {},
+    "ee0139b8ca70498f969894f799b61959": {},
+    "plone_site_root": {
+      "Add portal member": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator",
+          "Owner"
+        ]
+      },
+      "Content rules: Manage rules": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Delete own comments": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator",
+          "Reviewer",
+          "Owner"
+        ]
+      },
+      "Reply to item": {
+        "acquire": false,
+        "roles": [
+          "Authenticated"
+        ]
+      },
+      "Set own password": {
+        "acquire": false,
+        "roles": [
+          "Authenticated",
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Set own properties": {
+        "acquire": false,
+        "roles": [
+          "Authenticated",
+          "Manager",
+          "Site Administrator"
+        ]
+      },
+      "Show Toolbar": {
+        "acquire": false,
+        "roles": [
+          "Authenticated"
+        ]
+      },
+      "plone.resource: Export ZIP file": {
+        "acquire": false,
+        "roles": [
+          "Manager"
+        ]
+      },
+      "plone.resourceeditor: Manage Sources": {
+        "acquire": false,
+        "roles": [
+          "Manager",
+          "Site Administrator"
+        ]
+      }
+    }
+  },
   "local_roles": {
     "a58ccead718140c1baa98d43595fc3e6": {
       "local_roles": {
@@ -18,6 +104,55 @@
       }
     },
     "a720393b3c0240e5bd27c43fcd2cfd1e": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "adf0cd89dd184a80814d0c79a9baaefe": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "bc4f1b91ac2b4ed9b932db57450c369e": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "c8956696acce49bda17e619cee819f85": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "ce4a77a35b204458aef031e00bf7214a": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "e0fb9ee5c5cc42d386a21561a057031f": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "e63a3089a3204a06b065868682556221": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "ee0139b8ca70498f969894f799b61959": {
       "local_roles": {
         "admin": [
           "Owner"
@@ -34,7 +169,14 @@
   },
   "ordering": {
     "a58ccead718140c1baa98d43595fc3e6": 0,
-    "a720393b3c0240e5bd27c43fcd2cfd1e": 42
+    "a720393b3c0240e5bd27c43fcd2cfd1e": 42,
+    "adf0cd89dd184a80814d0c79a9baaefe": 1,
+    "bc4f1b91ac2b4ed9b932db57450c369e": 43,
+    "c8956696acce49bda17e619cee819f85": 2,
+    "ce4a77a35b204458aef031e00bf7214a": 0,
+    "e0fb9ee5c5cc42d386a21561a057031f": 44,
+    "e63a3089a3204a06b065868682556221": 1,
+    "ee0139b8ca70498f969894f799b61959": 0
   },
   "relations": []
 }

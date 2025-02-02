@@ -1,0 +1,47 @@
+{
+  "@id": "/glossary/micronutrients",
+  "@type": "Term",
+  "UID": "adf0cd89dd184a80814d0c79a9baaefe",
+  "allow_discussion": null,
+  "created": "2025-02-02T15:24:43+00:00",
+  "definition": {
+    "content-type": "text/html",
+    "data": "<p><span class=\"\">Micronutrients are essential dietary elements required by organisms in varying quantities to regulate physiological functions of cells and organs. Micronutrients support the health of organisms throughout life</span></p>",
+    "encoding": "utf8"
+  },
+  "description": "",
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "micronutrients",
+  "image": null,
+  "is_folderish": false,
+  "language": "##DEFAULT##",
+  "layout": "view",
+  "lock": {},
+  "modified": "2025-02-02T15:24:51+00:00",
+  "review_state": "published",
+  "title": "micronutrients",
+  "type_title": "Term",
+  "variants": [],
+  "version": "current",
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2025-02-02T15:24:43+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2025-02-02T15:24:51+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}
