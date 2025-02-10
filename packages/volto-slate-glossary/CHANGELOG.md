@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.0 (2025-02-10)
+
+### Feature
+
+- Optionally show tooltips in accordion block panel. Default is false. @ksuess
+  Prepare for tooltips in description block. Add intructions to README. @ksuess
+  Prepare for tooltips in teaser block. Add intructions to README. @ksuess
+  Make TooltipPopup customizable via component registry. @ksuess [#13](https://github.com/rohberg/volto-slate-glossary/issue/13)
+
 ## 2.1.0 (2024-10-25)
 
 ### Feature
