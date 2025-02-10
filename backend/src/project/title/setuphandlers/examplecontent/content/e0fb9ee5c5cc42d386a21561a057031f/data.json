@@ -41,7 +41,7 @@
     "admin"
   ],
   "description": "",
-  "effective": "2025-02-02T15:34:42",
+  "effective": "2025-02-02T15:34:00",
   "exclude_from_nav": false,
   "expires": null,
   "exportimport.constrains": {},
@@ -54,7 +54,7 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2025-02-02T15:34:15+00:00",
+  "modified": "2025-02-10T07:04:50+00:00",
   "preview_caption": null,
   "preview_image": null,
   "review_state": "published",

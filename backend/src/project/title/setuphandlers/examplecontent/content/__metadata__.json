@@ -1,25 +1,22 @@
 {
   "__version__": "1.0.0",
   "_blob_files_": [
-    "e63a3089a3204a06b065868682556221/preview_image/Herbstlaub.JPG",
-    "a58ccead718140c1baa98d43595fc3e6/image/plone-foundation.png"
+    "e63a3089a3204a06b065868682556221/preview_image/Herbstlaub.JPG"
   ],
   "_data_files_": [
     "plone_site_root/data.json",
+    "39b1cb4ea75c4f459fb75e435fb8dca3/data.json",
+    "e63a3089a3204a06b065868682556221/data.json",
     "bc4f1b91ac2b4ed9b932db57450c369e/data.json",
     "c8956696acce49bda17e619cee819f85/data.json",
     "adf0cd89dd184a80814d0c79a9baaefe/data.json",
     "ee0139b8ca70498f969894f799b61959/data.json",
-    "a720393b3c0240e5bd27c43fcd2cfd1e/data.json",
-    "a58ccead718140c1baa98d43595fc3e6/data.json",
     "e0fb9ee5c5cc42d386a21561a057031f/data.json",
-    "e63a3089a3204a06b065868682556221/data.json",
     "ce4a77a35b204458aef031e00bf7214a/data.json"
   ],
   "default_page": {},
   "local_permissions": {
-    "a58ccead718140c1baa98d43595fc3e6": {},
-    "a720393b3c0240e5bd27c43fcd2cfd1e": {},
+    "39b1cb4ea75c4f459fb75e435fb8dca3": {},
     "adf0cd89dd184a80814d0c79a9baaefe": {},
     "bc4f1b91ac2b4ed9b932db57450c369e": {},
     "c8956696acce49bda17e619cee819f85": {},
@@ -96,14 +93,7 @@
     }
   },
   "local_roles": {
-    "a58ccead718140c1baa98d43595fc3e6": {
-      "local_roles": {
-        "admin": [
-          "Owner"
-        ]
-      }
-    },
-    "a720393b3c0240e5bd27c43fcd2cfd1e": {
+    "39b1cb4ea75c4f459fb75e435fb8dca3": {
       "local_roles": {
         "admin": [
           "Owner"
@@ -168,14 +158,13 @@
     }
   },
   "ordering": {
-    "a58ccead718140c1baa98d43595fc3e6": 0,
-    "a720393b3c0240e5bd27c43fcd2cfd1e": 42,
+    "39b1cb4ea75c4f459fb75e435fb8dca3": 44,
     "adf0cd89dd184a80814d0c79a9baaefe": 1,
-    "bc4f1b91ac2b4ed9b932db57450c369e": 43,
+    "bc4f1b91ac2b4ed9b932db57450c369e": 42,
     "c8956696acce49bda17e619cee819f85": 2,
     "ce4a77a35b204458aef031e00bf7214a": 0,
-    "e0fb9ee5c5cc42d386a21561a057031f": 44,
-    "e63a3089a3204a06b065868682556221": 1,
+    "e0fb9ee5c5cc42d386a21561a057031f": 43,
+    "e63a3089a3204a06b065868682556221": 0,
     "ee0139b8ca70498f969894f799b61959": 0
   },
   "relations": []

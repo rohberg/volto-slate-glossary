@@ -1,5 +1,5 @@
 {
-  "@id": "/news/trace-element",
+  "@id": "/documentation/trace-element",
   "@type": "Document",
   "UID": "e63a3089a3204a06b065868682556221",
   "allow_discussion": null,
@@ -34,7 +34,7 @@
     "admin"
   ],
   "description": "While in geochemistry, material components and accompanying elements of rocks and minerals in concentrations below 0.1% or 1000 ppm are referred to as trace elements, analytical chemistry usually prefers a threshold value of 100 ppm or 100 \u00b5g/g (= 100 mg/kg) or 0.01%. This must be distinguished from the narrower biological term:",
-  "effective": "2025-02-02T15:34:33",
+  "effective": "2025-02-02T15:34:00",
   "exclude_from_nav": false,
   "expires": null,
   "exportimport.constrains": {},
@@ -47,7 +47,7 @@
     "locked": false,
     "stealable": true
   },
-  "modified": "2025-02-02T15:34:15+00:00",
+  "modified": "2025-02-10T07:04:50+00:00",
   "preview_caption": null,
   "preview_image": {
     "blob_path": "e63a3089a3204a06b065868682556221/preview_image/Herbstlaub.JPG",

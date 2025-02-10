@@ -1,4 +1,5 @@
 {
-  "/Plone/news/ausbildungsmodul-farben": "/Plone/news/trace-element",
+  "/Plone/news/ausbildungsmodul-farben": "/Plone/documentation/trace-element",
+  "/Plone/news/trace-element": "/Plone/documentation/trace-element",
   "/Plone/news/ubungsstunde": "/Plone/news/water"
 }
