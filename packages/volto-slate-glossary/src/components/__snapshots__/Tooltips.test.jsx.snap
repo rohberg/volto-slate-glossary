@@ -18,7 +18,9 @@ exports[`Tooltips are generated for all occurrences 1`] = `
     >
       <h1
         class="documentFirstHeading"
-      />
+      >
+        Python tutorial
+      </h1>
       <p>
         <span
           class=""
@@ -64,7 +66,7 @@ exports[`Tooltips are generated for all occurrences 1`] = `
           <span
             class="glossarytooltip"
           >
-            μg
+            µg
           </span>
            NO2/m3&lt;/strong&gt;
         </span>
@@ -144,7 +146,9 @@ exports[`Tooltips are generated only case sensitive 1`] = `
     >
       <h1
         class="documentFirstHeading"
-      />
+      >
+        Python tutorial
+      </h1>
       <p>
         <span
           class=""
@@ -168,14 +172,26 @@ exports[`Tooltips are generated only case sensitive 1`] = `
           >
             AB
           </span>
-           ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
+           ist im Glossar erklärt. Wir verwenden 
+          <span
+            class="glossarytooltip"
+          >
+            AB
+          </span>
+           ab Donnerstag.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 μg NO2/m3&lt;/strong&gt;
+          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+          <span
+            class="glossarytooltip"
+          >
+            µg
+          </span>
+           NO2/m3&lt;/strong&gt;
         </span>
       </p>
       <p>
@@ -208,7 +224,13 @@ exports[`Tooltips are generated only case sensitive 1`] = `
         <span
           class=""
         >
-          Morgen üben wir weiter.
+          Morgen 
+          <span
+            class="glossarytooltip"
+          >
+            üben
+          </span>
+           wir weiter.
         </span>
       </p>
     </div>
@@ -247,7 +269,9 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
     >
       <h1
         class="documentFirstHeading"
-      />
+      >
+        Python tutorial
+      </h1>
       <p>
         <span
           class=""
@@ -281,7 +305,7 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
           <span
             class="glossarytooltip"
           >
-            μg
+            µg
           </span>
            NO2/m3&lt;/strong&gt;
         </span>
@@ -337,7 +361,7 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
 </div>
 `;
 
-exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1`] = `
+exports[`Tooltips in general  – NO tooltips if route doesn't match configuration 1`] = `
 <div>
   <div
     id="view"
@@ -355,7 +379,9 @@ exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1
     >
       <h1
         class="documentFirstHeading"
-      />
+      >
+        Python tutorial
+      </h1>
       <p>
         <span
           class=""
@@ -374,7 +400,7 @@ exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1
         <span
           class=""
         >
-          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 μg NO2/m3&lt;/strong&gt;
+          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 µg NO2/m3&lt;/strong&gt;
         </span>
       </p>
       <p>
@@ -413,7 +439,7 @@ exports[`Tooltips divers  – NO tooltips if route doesn't match configuration 1
 </div>
 `;
 
-exports[`Tooltips divers  – component Tooltips is rendered in AppExtras 1`] = `
+exports[`Tooltips in general  – component Tooltips is rendered in AppExtras 1`] = `
 <div>
   <div
     class="hidden-AppExtras-CalculateTexts"

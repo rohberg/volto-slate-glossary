@@ -7,6 +7,17 @@ export const tooltippedTextsAtom = atom({ pathname: undefined, texts: [] });
 
 export const MY_NAMESPACE = '4549d0a3-5fc2-4a94-bf96-eb7ddf5363a4';
 
+/**
+ * TextWithGlossaryTooltips
+ *
+ * returns enhanced markup from Jotai store if
+ * - location should show tooltips
+ * - current user has not opted out
+ * - page is in view mode
+ *
+ * @param {String} text
+ * @returns String
+ */
 export const TextWithGlossaryTooltips = ({ text }) => {
   const location = useSelector((state) => state.router?.location);
   const pathname = location?.pathname;
@@ -40,8 +51,9 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     return text;
   }
 
+  let uid;
   try {
-    uuidv5(text, MY_NAMESPACE);
+    uid = uuidv5(text, MY_NAMESPACE);
   } catch (error) {
     // "RangeError: offset is out of bounds"
     // generateUUID
@@ -49,7 +61,6 @@ export const TextWithGlossaryTooltips = ({ text }) => {
     // console.error(error);
     return text;
   }
-  let uid = uuidv5(text, MY_NAMESPACE);
   // No match in store if this location is not configured for tooltips. Return text unchanged.
   const newText = Object.keys(tooltippedTexts?.texts).includes(uid)
     ? tooltippedTexts.texts[uid]

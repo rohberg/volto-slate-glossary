@@ -35,11 +35,18 @@
   "dependencies": {
     "@plone/volto": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@eeacms/volto-accordion-block": "*",
     "@rohberg/volto-slate-glossary": "workspace:*",
     "policy": "workspace:*"
   },
   "devDependencies": {
     "mrs-developer": "^2.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+      "react-refresh": "^0.14.2"
+    }
   },
   "packageManager": "pnpm@9.1.1"
 }

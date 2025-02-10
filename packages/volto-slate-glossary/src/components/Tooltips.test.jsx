@@ -4,25 +4,20 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor } from '@testing-library/react';
 
+import ErrorBoundary from '@plone/volto/components/theme/Error/ErrorBoundary';
 import View from '@plone/volto/components/theme/View/View';
 import DefaultView from '@plone/volto/components/theme/View/DefaultView';
-import { AppExtras, ViewTitleBlock } from '@plone/volto/components';
+import AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
+import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import installSlate from '@plone/volto-slate/editor';
 import installTextBlock from '@plone/volto-slate/blocks/Text';
 import TextBlockView from '@plone/volto-slate/blocks/Text/TextBlockView';
-import { TextWithGlossaryTooltips } from '../utils';
-import Tooltips from '../components/Tooltips';
+import Tooltips from './Tooltips';
+import applyConfig from '../index';
+
 import config from '@plone/volto/registry';
 
-const installTooltips = (config) => {
-  config.settings.glossary = {
-    caseSensitive: false,
-    matchOnlyFirstOccurence: false,
-  };
-  config.settings.slate.leafs = {
-    text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
-  };
-
+function installTooltips(config) {
   config.settings.appExtras = [
     // ...config.settings.appExtras,
     {
@@ -31,7 +26,7 @@ const installTooltips = (config) => {
     },
   ];
   return config;
-};
+}
 
 beforeAll(() => {
   config.set('views', {
@@ -46,6 +41,8 @@ beforeAll(() => {
       ECONNREFUSED: () => <div className="ECONNREFUSED" />,
     },
   });
+
+  config.settings.publicURL = 'https://plone.org';
 
   // Apply volto-slate configuration
   [installSlate, installTextBlock].reduce((acc, apply) => apply(acc), config);
@@ -62,10 +59,9 @@ beforeAll(() => {
   };
 
   // Apply volto-slate-glossary configuration
-  [installTooltips].reduce((acc, apply) => apply(acc), config);
-
-  config.settings.publicURL = 'https://plone.org';
+  [installTooltips, applyConfig].reduce((acc, apply) => apply(acc), config);
 });
+
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
@@ -194,6 +190,7 @@ const initialStore = {
   content: {
     data: {
       '@type': 'Document',
+      title: 'Python tutorial',
       blocks: {
         '1b1e29b6-5c16-48b7-ae63-d6dd70d9799c': {
           '@type': 'slate',
@@ -241,12 +238,12 @@ const initialStore = {
         '00000001-68af-4935-860b-9f17375368d8': {
           '@type': 'slate',
           plaintext:
-            'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 μg NO2/m3',
+            'Bij volledige elektrificatie: Canyon: Tot -57% of tot -17 µg NO2/m3',
           value: [
             {
               children: [
                 {
-                  text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 μg NO2/m3</strong>',
+                  text: 'Bij volledige elektrificatie: <strong>Canyon: Tot -57% of tot -17 µg NO2/m3</strong>',
                 },
               ],
               type: 'p',
@@ -346,7 +343,7 @@ const initialStore = {
   },
 };
 
-describe('Tooltips divers', () => {
+describe('Tooltips in general', () => {
   let baseStore = initialStore;
 
   it(" – NO tooltips if route doesn't match configuration", () => {
@@ -354,10 +351,10 @@ describe('Tooltips divers', () => {
     config.settings.appExtras = [];
     const { container } = render(
       <Provider store={store}>
-        <>
+        <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-        </>
+        </ErrorBoundary>
       </Provider>,
     );
 
@@ -375,7 +372,12 @@ describe('Tooltips divers', () => {
     ];
     const { container } = render(
       <Provider store={store}>
-        <AppExtras pathname="/test"></AppExtras>
+        <ErrorBoundary>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
+        </ErrorBoundary>
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -389,11 +391,14 @@ describe('Tooltips', () => {
     const store = mockStore(baseStore);
     const { container } = render(
       <Provider store={store}>
-        <>
+        <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
-        </>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
+        </ErrorBoundary>
       </Provider>,
     );
 
@@ -407,11 +412,14 @@ describe('Tooltips', () => {
     config.settings.glossary.matchOnlyFirstOccurence = true;
     const { container } = render(
       <Provider store={store}>
-        <>
+        <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
-        </>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
+        </ErrorBoundary>
       </Provider>,
     );
 
@@ -422,14 +430,18 @@ describe('Tooltips', () => {
 
   test('are generated only case sensitive', async () => {
     const store = mockStore(baseStore);
+    config.settings.glossary.matchOnlyFirstOccurence = false;
     config.settings.glossary.caseSensitive = true;
     const { container } = render(
       <Provider store={store}>
-        <>
+        <ErrorBoundary>
           <View location={{ pathname: '/test' }} />
           <div id="toolbar"></div>
-          <AppExtras pathname="/test"></AppExtras>
-        </>
+          <AppExtras
+            pathname="/test"
+            content={initialStore.content.data}
+          ></AppExtras>
+        </ErrorBoundary>
       </Provider>,
     );
 

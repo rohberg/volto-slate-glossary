@@ -1,0 +1,41 @@
+{
+  "@id": "/glossary",
+  "@type": "Glossary",
+  "UID": "bc4f1b91ac2b4ed9b932db57450c369e",
+  "allow_discussion": null,
+  "created": "2025-02-02T14:25:04+00:00",
+  "description": "",
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "id": "glossary",
+  "is_folderish": true,
+  "language": "##DEFAULT##",
+  "layout": "view",
+  "lock": {},
+  "modified": "2025-02-02T15:32:00+00:00",
+  "review_state": "published",
+  "text": null,
+  "title": "Glossary",
+  "type_title": "Glossary",
+  "version": "current",
+  "workflow_history": {
+    "simple_publication_workflow": [
+      {
+        "action": null,
+        "actor": "admin",
+        "comments": "",
+        "review_state": "private",
+        "time": "2025-02-02T14:25:04+00:00"
+      },
+      {
+        "action": "publish",
+        "actor": "admin",
+        "comments": "",
+        "review_state": "published",
+        "time": "2025-02-02T14:27:01+00:00"
+      }
+    ]
+  },
+  "working_copy": null,
+  "working_copy_of": null
+}
