@@ -15,7 +15,7 @@ const applyConfig = (config) => {
   };
 
   config.settings.slate.leafs = {
-    text: ({ children }) => <TextWithGlossaryTooltips text={children} />,
+    text: ({ children }) => TextWithGlossaryTooltips({ text: children }),
   };
 
   config.settings.appExtras = [
