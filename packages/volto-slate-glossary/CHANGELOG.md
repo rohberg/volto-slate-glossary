@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.1 (2025-05-10)
+
+### Bugfix
+
+- Fix rendering of no-tooltip pages: keep line breaks. @ksuess [#15](https://github.com/rohberg/volto-slate-glossary/issue/15)
+
 ## 2.2.0 (2025-02-10)
 
 ### Feature
