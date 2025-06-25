@@ -10,12 +10,12 @@ export function getGlossaryTerms(pathname = null) {
   };
 }
 
-export function getTooltipTerms() {
+export function getTooltipTerms(navroot = null) {
   return {
     type: GET_TOOLTIPTERMS,
     request: {
       op: 'get',
-      path: '/@tooltip_terms',
+      path: (navroot ? `${navroot}` : '') + '/@tooltip_terms',
     },
   };
 }

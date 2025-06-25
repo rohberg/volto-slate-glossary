@@ -8,6 +8,7 @@ import flattenDeep from 'lodash/flattenDeep';
 import { Text } from 'slate';
 import { v5 as uuidv5 } from 'uuid';
 import { getUser } from '@plone/volto/actions/users/users';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { getTooltipTerms } from '../actions';
 import { MY_NAMESPACE } from '../utils';
 import { tooltippedTextsAtom } from '../utils';
@@ -16,12 +17,23 @@ import config from '@plone/volto/registry';
 /**
  * Add to config.settings.appExtras
  */
-export const FetchTooltipTerms = ({ token }) => {
+export const FetchTooltipTerms = (props) => {
+  const { content, token } = props;
   const dispatch = useDispatch();
+  const currentNavroot = React.useRef(null);
+
+  const navroot = content['@components'].navroot?.navroot
+    ? flattenToAppURL(content['@components'].navroot.navroot['@id'])
+    : null;
 
   useEffect(() => {
-    dispatch(getTooltipTerms());
-  }, [dispatch]);
+    // Unfortunately component unmounts on changing route between LRFs
+    // so we need to check if we already fetched terms for this navroot
+    if (!currentNavroot.current) {
+      currentNavroot.current = navroot;
+      dispatch(getTooltipTerms(navroot));
+    }
+  }, [dispatch, navroot]);
 
   useEffect(() => {
     let userid = token ? jwtDecode(token).sub : '';
