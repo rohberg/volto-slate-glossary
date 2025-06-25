@@ -1,11 +1,11 @@
 import { GET_GLOSSARYTERMS, GET_TOOLTIPTERMS } from '../constants/ActionTypes';
 
-export function getGlossaryTerms() {
+export function getGlossaryTerms(pathname = null) {
   return {
     type: GET_GLOSSARYTERMS,
     request: {
       op: 'get',
-      path: '/@glossary_terms',
+      path: (pathname ? `${pathname}` : '') + '/@glossary_terms',
     },
   };
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import cx from 'classnames';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { getGlossaryTerms } from '../actions';
 import config from '@plone/volto/registry';
 
@@ -10,12 +11,12 @@ const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const showAlphabetNavigation =
   config.settings?.glossary?.showAlphabetNavigation || true;
 
-const GlossaryView = ({ content }) => {
+const GlossaryView = ({ content, location }) => {
   const dispatch = useDispatch();
-  const pathname = useSelector((state) => state.router.location.pathname);
+  const pathname = getBaseUrl(location.pathname);
 
   React.useEffect(() => {
-    dispatch(getGlossaryTerms());
+    dispatch(getGlossaryTerms(pathname));
   }, [dispatch, pathname]);
 
   const glossaryentries = useSelector(
