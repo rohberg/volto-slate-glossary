@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.3.0 (2025-06-27)
+
+### Feature
+
+- Support multilingual sites. @ksuess [#17](https://github.com/rohberg/volto-slate-glossary/issue/17)
+
+### Bugfix
+
+- Fix rendering of no-tooltip pages: keep line breaks. @ksuess [#15](https://github.com/rohberg/volto-slate-glossary/issue/15)
+
 ## 2.2.0 (2025-02-10)
 
 ### Feature
