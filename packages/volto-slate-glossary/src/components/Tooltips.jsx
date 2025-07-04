@@ -22,7 +22,7 @@ export const FetchTooltipTerms = (props) => {
   const dispatch = useDispatch();
   const currentNavroot = React.useRef(null);
 
-  const navroot = content['@components'].navroot?.navroot
+  const navroot = content?.['@components']?.navroot?.navroot
     ? flattenToAppURL(content['@components'].navroot.navroot['@id'])
     : null;
 
