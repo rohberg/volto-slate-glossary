@@ -1,6 +1,6 @@
 {
   "name": "@rohberg/volto-slate-glossary",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Add tooltips for glossary terms",
   "main": "src/index.js",
   "license": "MIT",

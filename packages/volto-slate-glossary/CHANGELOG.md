@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.3.1 (2025-07-04)
+
+### Bugfix
+
+- Fix SSR. @ksuess [#17](https://github.com/rohberg/volto-slate-glossary/issue/17)
+
 ## 2.3.0 (2025-06-27)
 
 ### Feature
