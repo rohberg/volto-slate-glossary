@@ -12,6 +12,9 @@ Volto add-on `@rohberg/volto-slate-glossary` adds tooltips for glossary terms of
 Install Plone add-on [collective.glossary](https://github.com/collective/collective.glossary) in your backend.
 This provides the content type `glossary`.
 
+
+## Configuration
+
 Determine where to apply tooltips in your project by match configuration:
 
 ```js
