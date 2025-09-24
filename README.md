@@ -1,6 +1,6 @@
 # @rohberg/volto-slate-glossary
 
-Volto add-on `@rohberg/volto-slate-glossary` adds tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
+Plone frontend add-on (for Plone Voltolino and Volto frontend) `@rohberg/volto-slate-glossary` adds tooltips for glossary terms of [collective.glossary](https://github.com/collective/collective.glossary)
 
 [![npm](https://img.shields.io/npm/v/@rohberg/volto-slate-glossary)](https://www.npmjs.com/package/@rohberg/volto-slate-glossary)
 [![Unit tests](https://github.com/rohberg/volto-slate-glossary/actions/workflows/unit.yml/badge.svg)](https://github.com/rohberg/volto-slate-glossary/actions/workflows/unit.yml)
