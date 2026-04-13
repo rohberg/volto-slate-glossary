@@ -28,42 +28,39 @@ export const TextWithGlossaryTooltips = ({ text }) => {
   const currentuser = useSelector((state) => state.users?.user);
 
   /**
-   * Skip enhancing with tooltip markup for some conditions
+   * Skip enhancing with tooltip markup for some conditions.
+   * Always wrap in <span> so server and client render identical DOM structure.
    */
 
   // No tooltips if pathname is not configured to have tooltips
   if (!tooltippedTexts?.pathname || tooltippedTexts?.pathname !== pathname) {
-    return text;
+    return <span className="">{text}</span>;
   }
 
   // No tooltips if user opted out
   const showGlossarytooltipsUser = currentuser?.glossarytooltips ?? true;
   if (!showGlossarytooltipsUser) {
-    return text;
+    return <span className="">{text}</span>;
   }
 
   // No tooltips on home page, in edit mode, and add mode
   if (pathname === undefined) {
-    return text;
+    return <span className="">{text}</span>;
   }
   const isEditMode = pathname.slice(-5) === '/edit';
   if (isEditMode || pathname === '/' || !__CLIENT__) {
-    return text;
+    return <span className="">{text}</span>;
   }
 
   let uid;
   try {
     uid = uuidv5(text, MY_NAMESPACE);
   } catch (error) {
-    // "RangeError: offset is out of bounds"
-    // generateUUID
-    // node_modules/.pnpm/uuid@8.3.2/node_modules/uuid/dist/esm-browser/v35.js:36
-    // console.error(error);
-    return text;
+    return <span className="">{text}</span>;
   }
   // No match in store if this location is not configured for tooltips. Return text unchanged.
   const newText = Object.keys(tooltippedTexts?.texts).includes(uid)
     ? tooltippedTexts.texts[uid]
     : text;
-  return newText;
+  return <span className="">{newText}</span>;
 };

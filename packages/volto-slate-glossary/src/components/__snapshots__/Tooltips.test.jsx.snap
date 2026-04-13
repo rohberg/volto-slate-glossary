@@ -26,88 +26,112 @@ exports[`Tooltips are generated for all occurrences 1`] = `
           class=""
         >
           <span
-            class="glossarytooltip"
+            class=""
           >
-            Üben
+            <span
+              class="glossarytooltip"
+            >
+              Üben
+            </span>
+             macht den Meister.
           </span>
-           macht den Meister.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Wir 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            üben
+            Wir 
+            <span
+              class="glossarytooltip"
+            >
+              üben
+            </span>
+             das. Die Abkürzung 
+            <span
+              class="glossarytooltip"
+            >
+              AB
+            </span>
+             ist im Glossar erklärt. Wir verwenden 
+            <span
+              class="glossarytooltip"
+            >
+              AB
+            </span>
+             ab Donnerstag.
           </span>
-           das. Die Abkürzung 
-          <span
-            class="glossarytooltip"
-          >
-            AB
-          </span>
-           ist im Glossar erklärt. Wir verwenden 
-          <span
-            class="glossarytooltip"
-          >
-            AB
-          </span>
-           ab Donnerstag.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            µg
+            Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+            <span
+              class="glossarytooltip"
+            >
+              µg
+            </span>
+             NO2/m3&lt;/strong&gt;
           </span>
-           NO2/m3&lt;/strong&gt;
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          In automn, 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            Aბㄱ
+            In automn, 
+            <span
+              class="glossarytooltip"
+            >
+              Aბㄱ
+            </span>
+             is something you should care about.
           </span>
-           is something you should care about.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Het laatste 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            8-uurgemiddelde
+            Het laatste 
+            <span
+              class="glossarytooltip"
+            >
+              8-uurgemiddelde
+            </span>
+             van een dag wordt berekend van 16:00 uur tot 24:00 uur.
           </span>
-           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Morgen 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            üben
+            Morgen 
+            <span
+              class="glossarytooltip"
+            >
+              üben
+            </span>
+             wir weiter.
           </span>
-           wir weiter.
         </span>
       </p>
     </div>
@@ -153,84 +177,108 @@ exports[`Tooltips are generated only case sensitive 1`] = `
         <span
           class=""
         >
-          Üben macht den Meister.
+          <span
+            class=""
+          >
+            Üben macht den Meister.
+          </span>
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Wir 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            üben
+            Wir 
+            <span
+              class="glossarytooltip"
+            >
+              üben
+            </span>
+             das. Die Abkürzung 
+            <span
+              class="glossarytooltip"
+            >
+              AB
+            </span>
+             ist im Glossar erklärt. Wir verwenden 
+            <span
+              class="glossarytooltip"
+            >
+              AB
+            </span>
+             ab Donnerstag.
           </span>
-           das. Die Abkürzung 
-          <span
-            class="glossarytooltip"
-          >
-            AB
-          </span>
-           ist im Glossar erklärt. Wir verwenden 
-          <span
-            class="glossarytooltip"
-          >
-            AB
-          </span>
-           ab Donnerstag.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            µg
+            Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+            <span
+              class="glossarytooltip"
+            >
+              µg
+            </span>
+             NO2/m3&lt;/strong&gt;
           </span>
-           NO2/m3&lt;/strong&gt;
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          In automn, 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            Aბㄱ
+            In automn, 
+            <span
+              class="glossarytooltip"
+            >
+              Aბㄱ
+            </span>
+             is something you should care about.
           </span>
-           is something you should care about.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Het laatste 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            8-uurgemiddelde
+            Het laatste 
+            <span
+              class="glossarytooltip"
+            >
+              8-uurgemiddelde
+            </span>
+             van een dag wordt berekend van 16:00 uur tot 24:00 uur.
           </span>
-           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Morgen 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            üben
+            Morgen 
+            <span
+              class="glossarytooltip"
+            >
+              üben
+            </span>
+             wir weiter.
           </span>
-           wir weiter.
         </span>
       </p>
     </div>
@@ -277,70 +325,94 @@ exports[`Tooltips are generated only for first occurrences per page 1`] = `
           class=""
         >
           <span
-            class="glossarytooltip"
+            class=""
           >
-            Üben
+            <span
+              class="glossarytooltip"
+            >
+              Üben
+            </span>
+             macht den Meister.
           </span>
-           macht den Meister.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Wir üben das. Die Abkürzung 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            AB
+            Wir üben das. Die Abkürzung 
+            <span
+              class="glossarytooltip"
+            >
+              AB
+            </span>
+             ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
           </span>
-           ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            µg
+            Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 
+            <span
+              class="glossarytooltip"
+            >
+              µg
+            </span>
+             NO2/m3&lt;/strong&gt;
           </span>
-           NO2/m3&lt;/strong&gt;
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          In automn, 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            Aბㄱ
+            In automn, 
+            <span
+              class="glossarytooltip"
+            >
+              Aბㄱ
+            </span>
+             is something you should care about.
           </span>
-           is something you should care about.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Het laatste 
           <span
-            class="glossarytooltip"
+            class=""
           >
-            8-uurgemiddelde
+            Het laatste 
+            <span
+              class="glossarytooltip"
+            >
+              8-uurgemiddelde
+            </span>
+             van een dag wordt berekend van 16:00 uur tot 24:00 uur.
           </span>
-           van een dag wordt berekend van 16:00 uur tot 24:00 uur.
         </span>
       </p>
       <p>
         <span
           class=""
         >
-          Morgen üben wir weiter.
+          <span
+            class=""
+          >
+            Morgen üben wir weiter.
+          </span>
         </span>
       </p>
     </div>
@@ -383,22 +455,70 @@ exports[`Tooltips in general  – NO tooltips if route doesn't match configurati
         Python tutorial
       </h1>
       <p>
-        Üben macht den Meister.
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            Üben macht den Meister.
+          </span>
+        </span>
       </p>
       <p>
-        Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            Wir üben das. Die Abkürzung AB ist im Glossar erklärt. Wir verwenden AB ab Donnerstag.
+          </span>
+        </span>
       </p>
       <p>
-        Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 µg NO2/m3&lt;/strong&gt;
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            Bij volledige elektrificatie: &lt;strong&gt;Canyon: Tot -57% of tot -17 µg NO2/m3&lt;/strong&gt;
+          </span>
+        </span>
       </p>
       <p>
-        In automn, Aბㄱ is something you should care about.
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            In automn, Aბㄱ is something you should care about.
+          </span>
+        </span>
       </p>
       <p>
-        Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            Het laatste 8-uurgemiddelde van een dag wordt berekend van 16:00 uur tot 24:00 uur.
+          </span>
+        </span>
       </p>
       <p>
-        Morgen üben wir weiter.
+        <span
+          class=""
+        >
+          <span
+            class=""
+          >
+            Morgen üben wir weiter.
+          </span>
+        </span>
       </p>
     </div>
     <div

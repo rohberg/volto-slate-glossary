@@ -188,7 +188,7 @@ const View = (props) => {
                     }
                   />
                   <span>
-                    {TextWithGlossaryTooltips({ text: panel?.title })}
+                    <TextWithGlossaryTooltips text={panel?.title} />
                   </span>
                 </Accordion.Title>
                 <AnimateHeight
